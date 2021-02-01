@@ -5,8 +5,11 @@
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
 set_global_assignment -name TOP_LEVEL_ENTITY DE10DAQ_TOP
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.1 Standard Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:14:54 MARCH 04,2015"
+set_global_assignment -name DEVICE_FILTER_PACKAGE UFBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 672
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 7
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 
 #============================================================
@@ -15,6 +18,10 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_location_assignment PIN_V11 -to FPGA_CLK1_50
 set_location_assignment PIN_Y13 -to FPGA_CLK2_50
 set_location_assignment PIN_E11 -to FPGA_CLK3_50
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK1_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK2_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK3_50
 
 #============================================================
 # ADC
@@ -28,82 +35,6 @@ set_location_assignment PIN_V10 -to ADC_SCK
 set_location_assignment PIN_AC4 -to ADC_SDI
 set_location_assignment PIN_AD4 -to ADC_SDO
 
-#============================================================
-# ARDUINO
-#============================================================
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_IO[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ARDUINO_RESET_N
-set_location_assignment PIN_AG13 -to ARDUINO_IO[0]
-set_location_assignment PIN_AF13 -to ARDUINO_IO[1]
-set_location_assignment PIN_AG10 -to ARDUINO_IO[2]
-set_location_assignment PIN_AG9 -to ARDUINO_IO[3]
-set_location_assignment PIN_U14 -to ARDUINO_IO[4]
-set_location_assignment PIN_U13 -to ARDUINO_IO[5]
-set_location_assignment PIN_AG8 -to ARDUINO_IO[6]
-set_location_assignment PIN_AH8 -to ARDUINO_IO[7]
-set_location_assignment PIN_AF17 -to ARDUINO_IO[8]
-set_location_assignment PIN_AE15 -to ARDUINO_IO[9]
-set_location_assignment PIN_AF15 -to ARDUINO_IO[10]
-set_location_assignment PIN_AG16 -to ARDUINO_IO[11]
-set_location_assignment PIN_AH11 -to ARDUINO_IO[12]
-set_location_assignment PIN_AH12 -to ARDUINO_IO[13]
-set_location_assignment PIN_AH9 -to ARDUINO_IO[14]
-set_location_assignment PIN_AG11 -to ARDUINO_IO[15]
-set_location_assignment PIN_AH7 -to ARDUINO_RESET_N
-
-#============================================================
-# HDMI
-#============================================================
-set_location_assignment PIN_U10 -to HDMI_I2C_SCL
-set_location_assignment PIN_AA4 -to HDMI_I2C_SDA
-set_location_assignment PIN_T13 -to HDMI_I2S
-set_location_assignment PIN_T11 -to HDMI_LRCLK
-set_location_assignment PIN_U11 -to HDMI_MCLK
-set_location_assignment PIN_T12 -to HDMI_SCLK
-set_location_assignment PIN_AG5 -to HDMI_TX_CLK
-set_location_assignment PIN_AD19 -to HDMI_TX_DE
-set_location_assignment PIN_AD12 -to HDMI_TX_D[0]
-set_location_assignment PIN_AE12 -to HDMI_TX_D[1]
-set_location_assignment PIN_W8 -to HDMI_TX_D[2]
-set_location_assignment PIN_Y8 -to HDMI_TX_D[3]
-set_location_assignment PIN_AD11 -to HDMI_TX_D[4]
-set_location_assignment PIN_AD10 -to HDMI_TX_D[5]
-set_location_assignment PIN_AE11 -to HDMI_TX_D[6]
-set_location_assignment PIN_Y5 -to HDMI_TX_D[7]
-set_location_assignment PIN_AF10 -to HDMI_TX_D[8]
-set_location_assignment PIN_Y4 -to HDMI_TX_D[9]
-set_location_assignment PIN_AE9 -to HDMI_TX_D[10]
-set_location_assignment PIN_AB4 -to HDMI_TX_D[11]
-set_location_assignment PIN_AE7 -to HDMI_TX_D[12]
-set_location_assignment PIN_AF6 -to HDMI_TX_D[13]
-set_location_assignment PIN_AF8 -to HDMI_TX_D[14]
-set_location_assignment PIN_AF5 -to HDMI_TX_D[15]
-set_location_assignment PIN_AE4 -to HDMI_TX_D[16]
-set_location_assignment PIN_AH2 -to HDMI_TX_D[17]
-set_location_assignment PIN_AH4 -to HDMI_TX_D[18]
-set_location_assignment PIN_AH5 -to HDMI_TX_D[19]
-set_location_assignment PIN_AH6 -to HDMI_TX_D[20]
-set_location_assignment PIN_AG6 -to HDMI_TX_D[21]
-set_location_assignment PIN_AF9 -to HDMI_TX_D[22]
-set_location_assignment PIN_AE8 -to HDMI_TX_D[23]
-set_location_assignment PIN_T8 -to HDMI_TX_HS
-set_location_assignment PIN_AF11 -to HDMI_TX_INT
-set_location_assignment PIN_V13 -to HDMI_TX_VS
 
 #============================================================
 # GPIO
@@ -336,88 +267,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to iADC_B_SDATA4
 #============================================================
 # HPS
 #============================================================
-
-#============================================================
-# KEY
-#============================================================
-set_location_assignment PIN_AH17 -to KEY[0]
-set_location_assignment PIN_AH16 -to KEY[1]
-
-#============================================================
-# LED
-#============================================================
-set_location_assignment PIN_W15 -to LED[0]
-set_location_assignment PIN_AA24 -to LED[1]
-set_location_assignment PIN_V16 -to LED[2]
-set_location_assignment PIN_V15 -to LED[3]
-set_location_assignment PIN_AF26 -to LED[4]
-set_location_assignment PIN_AE26 -to LED[5]
-set_location_assignment PIN_Y16 -to LED[6]
-set_location_assignment PIN_AA23 -to LED[7]
-
-#============================================================
-# SW
-#============================================================
-set_location_assignment PIN_Y24 -to SW[0]
-set_location_assignment PIN_W24 -to SW[1]
-set_location_assignment PIN_W21 -to SW[2]
-set_location_assignment PIN_W20 -to SW[3]
-
-#============================================================
-# End of pin assignments by Terasic System Builder
-#============================================================
-
-
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
-set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
-set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
-set_global_assignment -name ECO_REGENERATE_REPORT ON
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK1_50
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK2_50
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_CLK3_50
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SCL
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2C_SDA
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_I2S
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_LRCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_MCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_SCLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_CLK
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_DE
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[17]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[18]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[19]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[21]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[22]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_D[23]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_HS
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_INT
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HDMI_TX_VS
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_CONV_USB_N
 set_instance_assignment -name IO_STANDARD "SSTL-15 CLASS I" -to HPS_DDR3_ADDR[0] -tag __hps_sdram_p0
 set_instance_assignment -name IO_STANDARD "SSTL-15 CLASS I" -to HPS_DDR3_ADDR[1] -tag __hps_sdram_p0
 set_instance_assignment -name IO_STANDARD "SSTL-15 CLASS I" -to HPS_DDR3_ADDR[2] -tag __hps_sdram_p0
@@ -537,8 +386,27 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DATA[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DIR
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_NXT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_STP
+
+
+#============================================================
+# KEY
+#============================================================
+set_location_assignment PIN_AH17 -to KEY[0]
+set_location_assignment PIN_AH16 -to KEY[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
+
+#============================================================
+# LED
+#============================================================
+set_location_assignment PIN_W15 -to LED[0]
+set_location_assignment PIN_AA24 -to LED[1]
+set_location_assignment PIN_V16 -to LED[2]
+set_location_assignment PIN_V15 -to LED[3]
+set_location_assignment PIN_AF26 -to LED[4]
+set_location_assignment PIN_AE26 -to LED[5]
+set_location_assignment PIN_Y16 -to LED[6]
+set_location_assignment PIN_AA23 -to LED[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[2]
@@ -547,10 +415,37 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED[7]
+
+#============================================================
+# SW
+#============================================================
+set_location_assignment PIN_Y24 -to SW[0]
+set_location_assignment PIN_W24 -to SW[1]
+set_location_assignment PIN_W21 -to SW[2]
+set_location_assignment PIN_W20 -to SW[3]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[3]
+
+#============================================================
+# End of pin assignments by Terasic System Builder
+#============================================================
+
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
+set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
+set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0] -tag __hps_sdram_p0
 set_instance_assignment -name OUTPUT_TERMINATION "SERIES 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0] -tag __hps_sdram_p0
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[1] -tag __hps_sdram_p0
@@ -761,71 +656,75 @@ set_global_assignment -name POWER_USE_INPUT_FILES OFF
 set_global_assignment -name POWER_HPS_ENABLE ON
 set_global_assignment -name POWER_HPS_PROC_FREQ 800.000000
 set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
-set_global_assignment -name VHDL_INPUT_VERSION VHDL_1993
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE src/msd/Data_Builder_Top.vhd
-set_global_assignment -name VHDL_FILE src/msd/Data_Builder.vhd
+
+set_global_assignment -name SMART_RECOMPILE ON
+
 set_global_assignment -name QIP_FILE soc_system/synthesis/soc_system.qip
-set_global_assignment -name VHDL_FILE src/Event_Simulator_dummy.vhd
-set_global_assignment -name VHDL_FILE src/Trigger_generator.vhd
+set_global_assignment -name VHDL_FILE logic/Event_Simulator_dummy.vhd
+set_global_assignment -name VHDL_FILE logic/Trigger_generator.vhd
 set_global_assignment -name QSYS_FILE ADC_controller_IP.qsys
-set_global_assignment -name VHDL_FILE src/FrameCounter.vhd
-set_global_assignment -name VHDL_FILE src/PeriodicTick.vhd
-set_global_assignment -name VHDL_FILE src/BeamSimu.vhd
-set_global_assignment -name VHDL_FILE src/Trigger_Control.vhd
-set_global_assignment -name VHDL_FILE src/SC_FIFO.vhd
-set_global_assignment -name VHDL_FILE src/RisingEdge_Counter.vhd
-set_global_assignment -name VHDL_FILE src/Register_File.vhd
-set_global_assignment -name VHDL_FILE src/RegEventFifo.vhd
-set_global_assignment -name VHDL_FILE src/Random_generator.vhd
-set_global_assignment -name VHDL_FILE src/metadata_Fifo.vhd
-set_global_assignment -name VHDL_FILE src/Main_FSM.vhd
-set_global_assignment -name VHDL_FILE src/LongerPulse.vhd
-set_global_assignment -name VHDL_FILE src/Local_TX.vhd
-set_global_assignment -name VHDL_FILE src/Local_RX.vhd
-set_global_assignment -name VHDL_FILE src/Internal_Fifo.vhd
-set_global_assignment -name VHDL_FILE src/InputFifoControl.vhd
-set_global_assignment -name VHDL_FILE src/FifoRX.vhd
-set_global_assignment -name VHDL_FILE src/FifoControl.vhd
-set_global_assignment -name VHDL_FILE src/Fifo_TX_Regs.vhd
-set_global_assignment -name VHDL_FILE src/Fifo.vhd
-set_global_assignment -name VHDL_FILE src/EvFifoControl.vhd
-set_global_assignment -name VHDL_FILE src/Event_Simulator.vhd
-set_global_assignment -name VHDL_FILE src/Event_Builder.vhd
-set_global_assignment -name VHDL_FILE src/Debounce.vhd
-set_global_assignment -name VHDL_FILE src/DAQ_Package.vhd
-set_global_assignment -name VHDL_FILE src/DAQ_OnFPGA.vhd
-set_global_assignment -name VHDL_FILE src/DAQ_Module.vhd
-set_global_assignment -name VHDL_FILE src/Counter_nbitEN.vhd
-set_global_assignment -name VHDL_FILE src/Counter_nbit.vhd
-set_global_assignment -name VHDL_FILE src/Busy_Stretch.vhd
-set_global_assignment -name VERILOG_FILE src/IOFifosControl.v
-set_global_assignment -name QIP_FILE src/EventFifo.qip
-set_global_assignment -name QIP_FILE src/CommandFifo.qip
+set_global_assignment -name VHDL_FILE logic/FrameCounter.vhd
+set_global_assignment -name VHDL_FILE logic/PeriodicTick.vhd
+set_global_assignment -name VHDL_FILE logic/BeamSimu.vhd
+set_global_assignment -name VHDL_FILE logic/Trigger_Control.vhd
+set_global_assignment -name VHDL_FILE logic/SC_FIFO.vhd
+set_global_assignment -name VHDL_FILE logic/RisingEdge_Counter.vhd
+set_global_assignment -name VHDL_FILE logic/Register_File.vhd
+set_global_assignment -name VHDL_FILE logic/RegEventFifo.vhd
+set_global_assignment -name VHDL_FILE logic/Random_generator.vhd
+set_global_assignment -name VHDL_FILE logic/metadata_Fifo.vhd
+set_global_assignment -name VHDL_FILE logic/Main_FSM.vhd
+set_global_assignment -name VHDL_FILE logic/LongerPulse.vhd
+set_global_assignment -name VHDL_FILE logic/Local_TX.vhd
+set_global_assignment -name VHDL_FILE logic/Local_RX.vhd
+set_global_assignment -name VHDL_FILE logic/Internal_Fifo.vhd
+set_global_assignment -name VHDL_FILE logic/InputFifoControl.vhd
+set_global_assignment -name VHDL_FILE logic/FifoRX.vhd
+set_global_assignment -name VHDL_FILE logic/FifoControl.vhd
+set_global_assignment -name VHDL_FILE logic/Fifo_TX_Regs.vhd
+set_global_assignment -name VHDL_FILE logic/Fifo.vhd
+set_global_assignment -name VHDL_FILE logic/EvFifoControl.vhd
+set_global_assignment -name VHDL_FILE logic/Event_Simulator.vhd
+set_global_assignment -name VHDL_FILE logic/Event_Builder.vhd
+set_global_assignment -name VHDL_FILE logic/Debounce.vhd
+set_global_assignment -name VHDL_FILE logic/DAQ_Package.vhd
+set_global_assignment -name VHDL_FILE logic/DAQ_OnFPGA.vhd
+set_global_assignment -name VHDL_FILE logic/DAQ_Module.vhd
+set_global_assignment -name VHDL_FILE logic/Counter_nbitEN.vhd
+set_global_assignment -name VHDL_FILE logic/Counter_nbit.vhd
+set_global_assignment -name VHDL_FILE logic/Busy_Stretch.vhd
+set_global_assignment -name VERILOG_FILE logic/IOFifosControl.v
+set_global_assignment -name QIP_FILE logic/EventFifo.qip
+set_global_assignment -name QIP_FILE logic/CommandFifo.qip
 set_global_assignment -name SDC_FILE DE10DAQ.sdc
 set_global_assignment -name VERILOG_FILE ip/edge_detect/altera_edge_detector.v
 set_global_assignment -name QIP_FILE ip/altsource_probe/hps_reset.qip
-set_global_assignment -name VHDL_FILE src/DE10DAQ_TOP.vhd
-set_global_assignment -name VHDL_FILE src/FPGATop.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/sync_stage.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/sync_edge.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/STD_FIFO.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/shift_register.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/pulse_generator.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/parametric_fifo_synch.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/parametric_fifo_dp.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/edge_detector.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/differential_rx.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/delay_timer.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/counter.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/clock_divider.vhd
-set_global_assignment -name VHDL_FILE src/basic_functions/basic_package.vhd
-set_global_assignment -name VHDL_FILE src/msd/multiAdcPlaneInterface.vhd
-set_global_assignment -name VHDL_FILE src/msd/multiADC_interface.vhd
-set_global_assignment -name VHDL_FILE src/msd/HalfPlane_interface.vhd
-set_global_assignment -name VHDL_FILE src/msd/FE_interface.vhd
-set_global_assignment -name VHDL_FILE src/msd/ADC_interface.vhd
-set_global_assignment -name VHDL_FILE src/msd/FOOTpackage.vhd
+set_global_assignment -name VHDL_FILE logic/DE10DAQ_TOP.vhd
+set_global_assignment -name VHDL_FILE logic/FPGATop.vhd
+
+set_global_assignment -name VHDL_FILE logic/msdintf/Data_Builder_Top.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/Data_Builder.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/sync_stage.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/sync_edge.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/STD_FIFO.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/shift_register.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/pulse_generator.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/parametric_fifo_synch.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/parametric_fifo_dp.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/edge_detector.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/delay_timer.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/counter.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/clock_divider.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/basic_package.vhd -hdl_version VHDL_2008
+set_global_assignment -name VHDL_FILE logic/msdintf/ADC_interface.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/FE_interface.vhd -hdl_version VHDL_2008
+set_global_assignment -name VHDL_FILE logic/msdintf/FOOTpackage.vhd -hdl_version VHDL_2008
+set_global_assignment -name VHDL_FILE logic/msdintf/HalfPlane_interface.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/multiAdcPlaneInterface.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/multiADC_interface.vhd
+
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
