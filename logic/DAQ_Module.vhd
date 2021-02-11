@@ -4,7 +4,7 @@ use IEEE.std_logic_arith.all;
 use IEEE.std_logic_unsigned.all;
 use work.DAQ_Package.all;
 
-use work.FOOTpackage.all;	
+use work.FOOTpackage.all;
 
 entity DAQ_Module is
   port(
@@ -27,7 +27,7 @@ entity DAQ_Module is
 	 Trigger : in std_logic;
 	 -- ADC --
 	 adc_raw_values : in adc_values_t;
-	 
+
 	 -- Outputs --
 	 Busy_Out : out std_logic;
 	 Status : out std_logic_vector ( 2 downto 0);
@@ -43,13 +43,15 @@ entity DAQ_Module is
      debugVector : out std_logic_vector(7 downto 0);
 	 -- DDR3 pointers
      fpga_side_RAM_ctrl_reg : in    std_logic_vector(31 downto 0);                 -- fpga_side_RAM_ctrl_reg
-     hps_side_RAM_ctrl_reg  : in    std_logic_vector(31 downto 0)                  --  hps_side_RAM_ctrl_reg
+     hps_side_RAM_ctrl_reg  : in    std_logic_vector(31 downto 0);                  --  hps_side_RAM_ctrl_reg
+  -- Register to the MSD interface
+  Register_msd_config : out msd_config
   );
 end DAQ_Module;
 
 architecture Structural of DAQ_Module is
-  
-  component Main_FSM 
+
+  component Main_FSM
     port(
       --Inputs
       Clock : in std_logic;
@@ -67,7 +69,7 @@ architecture Structural of DAQ_Module is
 	   DAQ_Config : out std_logic
     );
   end component;
-  
+
   component Register_File
     port(
       Clock : in std_logic;
@@ -90,46 +92,46 @@ architecture Structural of DAQ_Module is
 	   INOut_Both_Active : out std_logic := '0'
     );
   end component;
-  
-  component Trigger_Control 
+
+  component Trigger_Control
     port (
-      --Inputs 
-      Clock : in std_logic;          
-      Reset : in std_logic;                
+      --Inputs
+      Clock : in std_logic;
+      Reset : in std_logic;
       --The Finite state machine is in Running State
-      DAQIsRunning : in std_logic;  
-      --Resets Counters preparing for run 
-      DAQ_Reset : in std_logic; 
-      Reset_Errors : in std_logic;		
-      --External clock 
-      BCOClock : in std_logic;      
-      BCOReset : in std_logic;    
+      DAQIsRunning : in std_logic;
+      --Resets Counters preparing for run
+      DAQ_Reset : in std_logic;
+      Reset_Errors : in std_logic;
+      --External clock
+      BCOClock : in std_logic;
+      BCOReset : in std_logic;
       --Trigger signal from GPIO
-      Trigger : in std_logic;       
+      Trigger : in std_logic;
       --Internl Busy from Event Builder
       Busy : in std_logic;
-     
+
       --Outputs
       --ClkCounter counts the number of clocks since DAQIsRunning passed from 0 to 1. The counter has 38bit
-      ClkCounter : out unsigned (31 downto 0);      
-      LSB_ClkCounter : out unsigned (5 downto 0); 
-      --BCOCounter Counts the number of BCOClocks      
-      BCOCounter : out unsigned (31 downto 0);  
-      --TriggerCounter Counts the number of Main_Trigger since DAQIsRunning passed from 0 to 1    
-      triggerCounter : out unsigned (31 downto 0);  
+      ClkCounter : out unsigned (31 downto 0);
+      LSB_ClkCounter : out unsigned (5 downto 0);
+      --BCOCounter Counts the number of BCOClocks
+      BCOCounter : out unsigned (31 downto 0);
+      --TriggerCounter Counts the number of Main_Trigger since DAQIsRunning passed from 0 to 1
+      triggerCounter : out unsigned (31 downto 0);
       --Trigger is sent to the inner part of the machine if DAQ is Running and the event builder is not busy
       Internal_Trigger : out std_logic ;
-      --Busy out passes a stretched version of the Event Builder Busy to GPIO 
-      Busy_Out : out std_logic; 
+      --Busy out passes a stretched version of the Event Builder Busy to GPIO
+      Busy_Out : out std_logic;
       --Errors
-      Error_notRunning : out std_logic; 
+      Error_notRunning : out std_logic;
       Error_busy : out std_logic;
       debugReg : out std_logic_vector(31 downto 0);
       debugTrg : out std_logic_vector(7 downto 0)
     );
   end component;
-  
-  component Event_Builder 
+
+  component Event_Builder
     port (
       --Inputs
       Clock : in std_logic;
@@ -174,8 +176,8 @@ architecture Structural of DAQ_Module is
 	   MetadataFifoFull : out std_logic
     );
   end component;
-  
-  component Local_TX 
+
+  component Local_TX
     port(
       Clock : in std_logic;
 	   Reset : in std_logic;
@@ -205,14 +207,14 @@ architecture Structural of DAQ_Module is
 	   RegsFifo_Full : out std_logic
     );
   end component;
-  
+
   component Local_RX
     port(
       Clock : in std_logic;
 	   Reset : in std_logic;
 	   -- Data from outher world --
 	   Ethernet_wrreq : in std_logic;
-	   Ethernet_Data : in std_logic_vector(31 downto 0); 
+	   Ethernet_Data : in std_logic_vector(31 downto 0);
 	   -- Configuration mode from FSM --
 	   DAQ_Config : in std_logic;
 	   -- Read Request from Local TX --
@@ -239,7 +241,7 @@ architecture Structural of DAQ_Module is
 	   FifoOut_Full : out std_logic
     );
   end component;
-  
+
   ----  FSM Signals  ----
   signal internalDAQIsRunning : std_logic :='0';
   signal internalDAQ_Reset : std_logic:='0';
@@ -286,25 +288,25 @@ architecture Structural of DAQ_Module is
   signal Register_DataRead : std_logic_vector(31 downto 0);
   signal Monitor_Registers_Bus : MONITOR_REGS_T:= default_MonRegisters;
   signal Control_Registers_Bus : CONTROL_REGS_T:= default_CtrlRegisters;
-  
+
 begin
 
   Reset_DAQErrors <= Reset_Errors or internalDAQ_Reset;-- Reset errors through appropriate signal or geenral reset from FSM
-  
+
   -- Register assignments
   Monitor_Registers_Bus(FSM_StatusSignals_Reg)(DAQ_IsRunning_Flag) <= internalDAQIsRunning;
   Monitor_Registers_Bus(FSM_StatusSignals_Reg)(DAQ_Reset_Flag)     <= internalDAQ_Reset;
   Monitor_Registers_Bus(FSM_StatusSignals_Reg)(DAQ_Config_Flag)    <= internalDAQ_Config;
   Monitor_Registers_Bus(FSM_StatusSignals_Reg)(ReadingEvent_Flag)  <= EB_ReadingEvent;
   Time_Out <= unsigned(Control_Registers_Bus(FSMTimeOut_Reg)(7 downto 0));
-  
+
   Monitor_Registers_Bus(FSM_StatusSignals_Reg)(2 downto 0) <= To_stdlogicvector(Status_Bus);
   Status <= Monitor_Registers_Bus(FSM_StatusSignals_Reg)(2 downto 0);
-  Monitor_Registers_Bus (ClkCounter_Reg)     <= std_logic_vector(FromEB_ClkCounter);  
-  Monitor_Registers_Bus (LSB_ClkCounter_Reg) <= conv_std_logic_vector(0,26) & std_logic_vector(FromEB_LSBClkCounter);    
-  Monitor_Registers_Bus (BCOCounter_Reg)     <= std_logic_vector(FromEB_BCOCounter);    
-  Monitor_Registers_Bus (TriggerCounter_Reg) <= std_logic_vector(FromEB_triggerCounter); 
-  
+  Monitor_Registers_Bus (ClkCounter_Reg)     <= std_logic_vector(FromEB_ClkCounter);
+  Monitor_Registers_Bus (LSB_ClkCounter_Reg) <= conv_std_logic_vector(0,26) & std_logic_vector(FromEB_LSBClkCounter);
+  Monitor_Registers_Bus (BCOCounter_Reg)     <= std_logic_vector(FromEB_BCOCounter);
+  Monitor_Registers_Bus (TriggerCounter_Reg) <= std_logic_vector(FromEB_triggerCounter);
+
   Monitor_Registers_Bus(EB_Fifos_Reg)(EBFull_Flag)            <= EB_FifoFull;
   Monitor_Registers_Bus(EB_Fifos_Reg)(EBFull_Flag2)           <= EB_FifoFull;
   Monitor_Registers_Bus(EB_Fifos_Reg)(EBMetadataFull_Flag)    <= EB_MetadataFull;
@@ -317,7 +319,7 @@ begin
   Monitor_Registers_Bus(LocalRX_Fifos_Reg)(RXFull_Flag2)      <= FifoRX_Full;
   Monitor_Registers_Bus(LocalRX_Fifos_Reg)(RXAlmostFull_Flag) <= FifoRX_AlmostFull;
   Monitor_Registers_Bus(Errors_Reg)(31 downto 4)              <= conv_std_logic_vector(0,28);
-  
+
   Monitor_Registers_Bus(ADC_ch0_reg)(11 downto 0)  <= adc_raw_values(0);
   Monitor_Registers_Bus(ADC_ch1_reg)(23 downto 12) <= adc_raw_values(1);
   Monitor_Registers_Bus(ADC_ch2_reg)(11 downto 0)  <= adc_raw_values(2);
@@ -328,18 +330,26 @@ begin
   Monitor_Registers_Bus(ADC_ch7_reg)(23 downto 12) <= adc_raw_values(7);
   Monitor_Registers_Bus(FPGA_p_RAM) <= fpga_side_RAM_ctrl_reg;
   Monitor_Registers_Bus(HPS_p_RAM) <= hps_side_RAM_ctrl_reg;
-  
+
   SDRAM_interface_enable <= Control_Registers_Bus(RAM_interface_En_Reg)(0);
   simulated_data_enable <= Control_Registers_Bus(simulated_acquisition_reg)(0);
-  
+
+  Register_msd_config.feClkDuty    <= Control_Registers_Bus(feClk)(31 downto 16);
+  Register_msd_config.feClkDiv     <= Control_Registers_Bus(feClk)(15 downto 0);
+  Register_msd_config.adcClkDuty   <= Control_Registers_Bus(adcClk)(31 downto 16);
+  Register_msd_config.adcClkDiv    <= Control_Registers_Bus(adcClk)(15 downto 0);
+  Register_msd_config.intTrgPeriod <= Control_Registers_Bus(intTrgPeriod);
+  Register_msd_config.cfgPlane     <= Control_Registers_Bus(feCfg_trg2Hold)(31 downto 16);
+  Register_msd_config.trg2Hold     <= Control_Registers_Bus(feCfg_trg2Hold)(15 downto 0);
+
   -- General flag, Errors Output
   Errors <= '0' when Monitor_Registers_Bus(Errors_Reg) = conv_std_logic_vector(0,32)
                 else '1';
-  
+
   -- Flags
   TX_emptyFlag <= Monitor_Registers_Bus (LocalTX_Fifo_Reg)(TXEmpty_Flag);-- from local TX, fifo_data from event builder
-  RX_almostFullFlag <= FifoRX_AlmostFull;-- from local rx, almost full of fifo rx 
-  
+  RX_almostFullFlag <= FifoRX_AlmostFull;-- from local rx, almost full of fifo rx
+
   -- Components port map
   Finite_State_Machine: Main_FSM
   port map(
@@ -356,7 +366,7 @@ begin
 	 DAQ_Reset => internalDAQ_Reset,
 	 DAQ_Config => internalDAQ_Config
     );
-	 
+
     Registers : Register_File
     port map(
       Clock => Clock,
@@ -374,22 +384,22 @@ begin
 	   Invalid_Address => Monitor_Registers_Bus (Errors_Reg)(InvalidAddress_Flag),
 	   INOut_Both_Active => Monitor_Registers_Bus (Errors_Reg)(InOutBothActive_Flag)
     );
-	 
+
 	 TriggerCtrl : Trigger_Control
 	 port map (
-      Clock => Clock,          
-      Reset => Reset,              
-      DAQIsRunning => internalDAQIsRunning,  
-      DAQ_Reset => internalDAQ_Reset, 
-      Reset_Errors => Reset_DAQErrors,		
-      BCOClock => BCOClock,    
-      BCOReset => BCOReset,    
-      Trigger => Trigger,       
+      Clock => Clock,
+      Reset => Reset,
+      DAQIsRunning => internalDAQIsRunning,
+      DAQ_Reset => internalDAQ_Reset,
+      Reset_Errors => Reset_DAQErrors,
+      BCOClock => BCOClock,
+      BCOReset => BCOReset,
+      Trigger => Trigger,
       Busy => EB_Busy,
-      ClkCounter => ToEB_ClkCounter,    
-      LSB_ClkCounter => ToEB_LSBClkCounter,    
-      BCOCounter => ToEB_BCOCounter,     
-      triggerCounter => ToEB_triggerCounter, 
+      ClkCounter => ToEB_ClkCounter,
+      LSB_ClkCounter => ToEB_LSBClkCounter,
+      BCOCounter => ToEB_BCOCounter,
+      triggerCounter => ToEB_triggerCounter,
       Internal_Trigger => internalTrigger,
 	   Busy_Out => Busy_Out,
       Error_notRunning => Monitor_Registers_Bus (Errors_Reg)(ErrorNotRunning_Flag),
@@ -397,7 +407,7 @@ begin
 	  debugReg => open, -- Monitor_Registers_Bus (BCOCounter_Reg),  -- temporary
 	  debugTrg => debugVector
 	 );
-	 
+
 	 EB : Event_Builder
 	 port map (
       Clock => Clock,
@@ -431,7 +441,7 @@ begin
 	   FifoFull => EB_FifoFull,
 	   MetadataFifoFull => EB_MetadataFull
     );
-	 
+
 	 LocalEthernetTX : Local_TX
 	 port map(
       Clock => Clock,
@@ -457,8 +467,8 @@ begin
 	   RegsFifo_Full => RegFifoTX_Full
     );
 	 -- This is the FIFO control structure to HPS
-	 regfifostatus <=   x"000"& '0' 
-		& RegFifoTX_Full & Monitor_Registers_Bus (LocalTX_Fifo_Reg)(TXRegFifoAlmostFull_Flag) & Monitor_Registers_Bus (LocalTX_Fifo_Reg)(TXRegFifoEmpty_Flag) & 
+	 regfifostatus <=   x"000"& '0'
+		& RegFifoTX_Full & Monitor_Registers_Bus (LocalTX_Fifo_Reg)(TXRegFifoAlmostFull_Flag) & Monitor_Registers_Bus (LocalTX_Fifo_Reg)(TXRegFifoEmpty_Flag) &
 		"000000" & RegFifoTX_Full & Monitor_Registers_Bus (LocalTX_Fifo_Reg) (24 downto 16);
 
 	 LocalEthernet_RX : Local_RX
