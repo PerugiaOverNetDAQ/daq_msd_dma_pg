@@ -16,7 +16,7 @@ package DAQ_Package is
   type CONTROL_REGS_T is ARRAY (0 to N_CONTROL_REGS-1) of
                          STD_LOGIC_VECTOR(31 downto 0);
   type MONITOR_REGS_T is ARRAY (0 to N_MONITOR_REGS-1) of
-                         STD_LOGIC_VECTOR(31 downto 0);
+                         STD_LOGIC_VECTOR(31 downto 0); 
 
   -- State of the Main Finite State Machine --
   type MainFSM_state is (Idle, Config, PrepareForRun, Run, EndOfRun, WaitingEmptyFifo);

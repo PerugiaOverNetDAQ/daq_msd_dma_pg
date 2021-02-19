@@ -5,6 +5,8 @@ use IEEE.std_logic_unsigned.all;
 use work.DAQ_Package.all;
 
 entity Event_Builder is
+generic (p_length_width : natural := 12
+ );
   port (
     -- Inputs
     Clock : in std_logic;
@@ -101,7 +103,7 @@ architecture behavior of Event_Builder is
   signal counterReset : std_logic;
   signal internalReset : std_logic;
   signal ResetAll: std_logic;
-  signal internalCounter : unsigned (11 downto 0);
+  signal internalCounter : unsigned (p_length_width-1 downto 0);
   -- InternalRdreq indicates when the main FIFO has to output data
   signal internalRdreq : std_logic;
   --InternalWrreq indicates when the main FIFO has to record data
@@ -112,7 +114,7 @@ architecture behavior of Event_Builder is
   signal internalEventsInTheFifo : std_logic_vector(7 downto 0);
   -- Ouput of main FIFO
   signal FifoOut : std_logic_vector (31 downto 0);
-  signal sequenceLength : unsigned (8 downto 0) := (others=>'0');
+  signal sequenceLength : unsigned (p_length_width-1 downto 0) := (others=>'0');
   -- Signals of metadata FIFO
   -- Gives out informations
   signal metadataRd : std_logic;
@@ -176,7 +178,7 @@ begin
   ); 
   
   Counter : Counter_nbit
-  generic map( nbit => 12)   
+  generic map( nbit => p_length_width)   
   port map (
 	 CLK => Clock,
 	 RESET => counterReset,
@@ -221,7 +223,7 @@ begin
 		next_state <= sequence;
 		
 	 when sequence =>
-      if internalCounter >= sequenceLength - conv_unsigned(3,12) then  
+      if internalCounter >= sequenceLength - conv_unsigned(3,p_length_width) then  
         next_state <= footer_1;  
       else
         next_state<=sequence;			 
@@ -310,7 +312,7 @@ begin
   end process;
 
   -- Read Request for the SC_FIFO
-  internalRdreq <= '1' when next_state = lengthDeclaration or (present_state = sequence and internalCounter <= sequenceLength-conv_unsigned(4,32))
+  internalRdreq <= '1' when next_state = lengthDeclaration or (present_state = sequence and internalCounter <= sequenceLength-conv_unsigned(4,p_length_width))
                        else '0';
   -- Write Request for the SC_FIFO
   internalWrreq <= Data_Valid;
@@ -335,7 +337,7 @@ begin
 	   present_state <= idle;
 	   pastDataValid <= '0';
 	   pastEndOfEvent <= '0';
-	   sequenceLength  <= conv_unsigned(0,9);
+	   sequenceLength  <= conv_unsigned(0,p_length_width);
 	   internalReadingEvent <= '0';
 	   outTrigger <= '0';
 	   EmptyHistory <= ones;
@@ -348,7 +350,7 @@ begin
 	   pastDataValid <= Data_Valid;
       present_state <= next_state;
 	   pastEndOfEvent <= endOfEvent;
-	   sequenceLength <= unsigned(outmetadata(8 downto 0))+conv_unsigned(8,9);
+	   sequenceLength <= unsigned(outmetadata(p_length_width-1 downto 0))+conv_unsigned(8,p_length_width);
 	   -- internalReadingEvent signals if an event is being recorded
 	   if pastendOfEvent = '1' and endOfEvent = '0' then
 	     internalReadingEvent <= '0';
