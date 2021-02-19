@@ -17,8 +17,7 @@ package DAQ_Package is
   type CONTROL_REGS_T is ARRAY (0 to N_CONTROL_REGS-1) of
                          STD_LOGIC_VECTOR(31 downto 0);
   type MONITOR_REGS_T is ARRAY (0 to N_MONITOR_REGS-1) of
-                         STD_LOGIC_VECTOR(31 downto 0);
-
+                         STD_LOGIC_VECTOR(31 downto 0); 
   -- State of the Main Finite State Machine --
   type MainFSM_state is (Idle, Config, PrepareForRun, Run, EndOfRun, WaitingEmptyFifo);
 
@@ -29,15 +28,15 @@ package DAQ_Package is
   constant ConfigToIdle : std_logic_vector (1 downto 0) := "11";
 
   -- These are the values used for the header in the Event_Simulator--
-  constant Header1_ES : unsigned (31 downto 0) := x"AAAAAAAA";
+  constant Header1_ES : unsigned (31 downto 0) := x"4EAD0501";
   constant Header1_ES_DUMMY : unsigned (31 downto 0) := x"0ABCDEF0";
-  constant Header2_ES : unsigned (31 downto 0) := x"BBBBBBBB";
-  constant Header3_ES : unsigned (31 downto 0) := x"CCCCCCCC";
-  constant Header4_ES : unsigned (31 downto 0) := x"DDDDDDDD";
+  constant Header2_ES : unsigned (31 downto 0) := x"4EAD1502";
+  constant Header3_ES : unsigned (31 downto 0) := x"4EAD2503";
+  constant Header4_ES : unsigned (31 downto 0) := x"4EAD3504";
   -- These are the values used for the footer in the Event_Simulator --
-  constant Footer1_ES : unsigned (31 downto 0) := x"55555555";
-  constant Footer2_ES : unsigned (31 downto 0) := x"EEEEEEEE";
-  constant Footer3_ES : unsigned (31 downto 0) := x"FFFFFFFF";
+  constant Footer1_ES : unsigned (31 downto 0) := x"F007E501";
+  constant Footer2_ES : unsigned (31 downto 0) := x"F007E502";
+  constant Footer3_ES : unsigned (31 downto 0) := x"F007E503";
   --  Constant part of any word in the random sequence of Event Simulator --
   constant constantPart : unsigned (15 downto 0) := x"1234";
 
