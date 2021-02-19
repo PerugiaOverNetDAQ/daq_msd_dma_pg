@@ -96,6 +96,7 @@ architecture structural of DAQ_OnFPGA is
 		adc_raw_values : in adc_values_t;
 
 	   -- Outputs --
+     Busy_In : in std_logic;
 	   Busy_Out : out std_logic;
 	   Status : out std_logic_vector ( 2 downto 0);
 	   Trigger_Out : out std_logic;
@@ -227,7 +228,7 @@ begin
   siMULTI_ADC <= iMULTI_ADC;
 
   Errors      <= Errors_DM or sCntOut.error;
-  Busy_Out    <= Busy_Out_DM or sCntOut.busy;
+  Busy_Out    <= Busy_Out_DM;
 
 
   data_from_msd <= unsigned (data_from_msd_temp.q);
@@ -251,6 +252,7 @@ begin
 	 BCOReset => BCOReset,
 	 Trigger => Trigger,
 	 adc_raw_values => adc_raw_values,
+   Busy_In => sCntOut.busy,--modified
 	 Busy_Out => Busy_Out_DM,--modified
 	 Trigger_Out => internalTrigger,
 	 Status => DAQ_State,

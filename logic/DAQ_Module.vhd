@@ -29,6 +29,7 @@ entity DAQ_Module is
 	 adc_raw_values : in adc_values_t;
 
 	 -- Outputs --
+   Busy_In : in std_logic;
 	 Busy_Out : out std_logic;
 	 Status : out std_logic_vector ( 2 downto 0);
 	 Trigger_Out : out std_logic;
@@ -395,7 +396,7 @@ begin
       BCOClock => BCOClock,
       BCOReset => BCOReset,
       Trigger => Trigger,
-      Busy => EB_Busy,
+      Busy => EB_Busy or Busy_In,
       ClkCounter => ToEB_ClkCounter,
       LSB_ClkCounter => ToEB_LSBClkCounter,
       BCOCounter => ToEB_BCOCounter,
