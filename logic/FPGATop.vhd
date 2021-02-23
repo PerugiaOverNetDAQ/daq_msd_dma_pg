@@ -65,7 +65,7 @@ architecture structural of FPGATop is
   signal SWD : std_logic_vector(3 downto 0) := "0000";   
 
   signal MainTriggerExt, MainTriggerKey, MainTrigger : std_logic;
-  signal enabletrg, randomtrigger : std_logic;
+  --signal enabletrg, randomtrigger : std_logic;
   signal BCOClock, BCOReset : std_logic;
 
   signal ledst   : std_logic_vector(7 downto 0);
@@ -129,7 +129,7 @@ begin
     port map(Clk=> Clock, Reset=>Reset,   button=>SW(3),     pulse=>SWD(3) );
 
   -- Maintrigger can be sent via a key (debug) or via an external pin
-  MainTrigger <= MainTriggerKey or iExtTrig or randomtrigger;  --!@todo trigger is an OR!! FOR THE MOMENT ONLY!! (From Bologna)
+  MainTrigger <= MainTriggerKey or iExtTrig; -- or randomtrigger;  --!@todo trigger is an OR!! FOR THE MOMENT ONLY!! (From Bologna)
 
   
   --
@@ -139,8 +139,8 @@ begin
     port map(
       Clock => Clock,
 	   Reset => Reset,
-		Enable => SWD(3),
-	   Reset_Errors => KEYD(1),
+		Enable => SWD(3), --!@todo Remove it and use a register
+	   Reset_Errors => KEYD(1), --!@todo Remove it and use a register
 		-- Input from Ethernet --
 	   Ethernet_Rdreq => readFromDAQ,
 	   Ethernet_RegistersRdreq => readFromRegister,
@@ -152,8 +152,8 @@ begin
 	   Trigger => MainTrigger,
       -- To State Signals --
 	   TowardRun => '0', --SWD(0),
-	   TowardIdle => SWD(1),
-	   ReadAll => SWD(2),
+	   TowardIdle => '0', --SWD(1),
+	   ReadAll => '0', --SWD(2),
 		-- ADC --
 		adc_raw_values => adc_raw_values,
 		
@@ -322,10 +322,10 @@ begin
   -- 
   -- under suitable conditions (i.e. SWD(0)=1) generate continuously a trigger
   --
-  enabletrg <= '1' when SWD(0)='1' and Led_State="011" and Busy_Out ='0'
-               else '0';
-  trgint: entity work.Trigger_generator
-          port map(Clock=>Clock, Reset=>Reset,  Enable=>enabletrg,   trigger=>randomtrigger );
+  --enabletrg <= '1' when SWD(0)='1' and Led_State="011" and Busy_Out ='0'
+  --             else '0';
+  --trgint: entity work.Trigger_generator
+  --        port map(Clock=>Clock, Reset=>Reset,  Enable=>enabletrg,   trigger=>randomtrigger );
   
   --
   --    Other outputs to HPS

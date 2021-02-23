@@ -3,6 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
 use IEEE.std_logic_unsigned.all;
 
+use work.FOOTpackage.all;
 
 package DAQ_Package is
 
@@ -17,7 +18,6 @@ package DAQ_Package is
                          STD_LOGIC_VECTOR(31 downto 0);
   type MONITOR_REGS_T is ARRAY (0 to N_MONITOR_REGS-1) of
                          STD_LOGIC_VECTOR(31 downto 0); 
-
   -- State of the Main Finite State Machine --
   type MainFSM_state is (Idle, Config, PrepareForRun, Run, EndOfRun, WaitingEmptyFifo);
 
@@ -68,10 +68,14 @@ package DAQ_Package is
   constant CtrlReg4 : std_logic_vector (31 downto 0) := x"00000004";
   constant CtrlReg5 : std_logic_vector (31 downto 0) := x"00000001";
   constant CtrlReg6 : std_logic_vector (31 downto 0) := x"00000000";
-  constant CtrlReg7 : std_logic_vector (31 downto 0) := x"00000000";
-  constant CtrlReg8 : std_logic_vector (31 downto 0) := x"00000000";
-  constant CtrlReg9 : std_logic_vector (31 downto 0) := x"00000000";
-  constant CtrlReg10 : std_logic_vector (31 downto 0) := x"00000000";
+  constant CtrlReg7 : std_logic_vector (31 downto 0)
+    := cFE_CLK_DUTY & cFE_CLK_DIV; --feClk
+  constant CtrlReg8 : std_logic_vector (31 downto 0)
+    := cADC_CLK_DUTY & cADC_CLK_DIV; --adcClk
+  constant CtrlReg9 : std_logic_vector (31 downto 0)
+    := cCFG_PLANE & cTRG2HOLD; --feCfg_trg2Hold
+  constant CtrlReg10 : std_logic_vector (31 downto 0)
+    := cTRG_PERIOD; --intTrgPeriod
   constant CtrlReg11 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg12 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg13 : std_logic_vector (31 downto 0) := x"00000000";
@@ -130,6 +134,10 @@ package DAQ_Package is
   constant FSMTimeOut_Reg : natural := 4;
   constant RAM_interface_En_Reg : natural := 5;----------------------------------
   constant simulated_acquisition_reg : natural := 6;--------------------------------
+  constant feClk          : natural := 7;
+  constant adcClk         : natural := 8;
+  constant feCfg_trg2Hold : natural := 9;
+  constant intTrgPeriod   : natural := 10;
   -- Monitor Register Map and Flag map --
   constant Firmware_Reg : natural := 0;
   constant FSM_StatusSignals_Reg : natural := 1;
