@@ -45,6 +45,8 @@ entity DAQ_Module is
 	 -- DDR3 pointers
      fpga_side_RAM_ctrl_reg : in    std_logic_vector(31 downto 0);                 -- fpga_side_RAM_ctrl_reg
      hps_side_RAM_ctrl_reg  : in    std_logic_vector(31 downto 0);                  --  hps_side_RAM_ctrl_reg
+   oRstFromFsm: out std_logic;
+   oRunningFromFsm: out std_logic;
   -- Register to the MSD interface
   Register_msd_config : out msd_config
   );
@@ -352,6 +354,8 @@ begin
   RX_almostFullFlag <= FifoRX_AlmostFull;-- from local rx, almost full of fifo rx
 
   -- Components port map
+  oRstFromFsm     <= internalDAQ_Reset;
+  oRunningFromFsm <= internalDAQIsRunning;
   Finite_State_Machine: Main_FSM
   port map(
     -- Inputs

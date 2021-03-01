@@ -112,6 +112,8 @@ architecture structural of DAQ_OnFPGA is
       debugVector : out std_logic_vector(7 downto 0);
       fpga_side_RAM_ctrl_reg : in    std_logic_vector(31 downto 0);                 -- fpga_side_RAM_ctrl_reg
       hps_side_RAM_ctrl_reg  : in    std_logic_vector(31 downto 0);                  --  hps_side_RAM_ctrl_reg
+     oRstFromFsm: out std_logic;
+     oRunningFromFsm: out std_logic;
     -- Register to the MSD interface
     Register_msd_config : out msd_config
     );
@@ -165,6 +167,8 @@ architecture structural of DAQ_OnFPGA is
 
  -- State of the DAQ Module --
   signal DAQ_State : std_logic_vector ( 2 downto 0);
+  signal sRstFromFsm      : std_logic;
+  signal sRunningFromFsm  : std_logic;
   -- Internal Signals --
   signal internalData_valid : std_logic:='0';
   signal internalEndOfEvent : std_logic;
@@ -268,6 +272,8 @@ begin
 	 -- DDR pointers
     fpga_side_RAM_ctrl_reg => fpga_side_RAM_ctrl_reg,
 	 hps_side_RAM_ctrl_reg => hps_side_RAM_ctrl_reg,
+   oRstFromFsm => sRstFromFsm,
+   oRunningFromFsm => sRunningFromFsm,
    -- Register to the MSD interface
    Register_msd_config => sReg_msd_config
     );
@@ -318,9 +324,9 @@ begin
   DB : Data_Builder_Top
     port map(
       iCLK         => Clock,            --!Main clock
-      iRST         => Reset,            --!Main reset
+      iRST         => Reset or sRstFromFsm or (not sRunningFromFsm), --!Main reset
       -- control interface
-      iEN          => Enable,           --!Enable
+      iEN          => Enable and sRunningFromFsm, --!Enable
       iTRIG        => Trigger,          --!External trigger
       oCNT         => sCntOut,          --!Control signals in output
       oCAL_TRIG    => sTrigInt,         --!Internal trigger output
