@@ -40,7 +40,7 @@ add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL IOFifosControl
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
-add_fileset_file IOFifosControl.v VERILOG PATH src/IOFifosControl.v TOP_LEVEL_FILE
+add_fileset_file IOFifosControl.v VERILOG PATH logic/IOFifosControl.v TOP_LEVEL_FILE
 
 
 # 
