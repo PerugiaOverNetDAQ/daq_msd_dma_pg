@@ -43,13 +43,14 @@ TDAQServerBase::TDAQServerBase(std::vector<std::string> & arguments,
   m_ipinterface = arguments.at(1);
   m_portno = atoi( (arguments.at(2)).c_str() );
   m_verbose = atoi( (arguments.at(3)).c_str() );
-  if( arguments.size()>3 ){
+  if( arguments.size()>5 ){
     m_blockSize = atoi( (arguments.at(5)).c_str() );
 	if( m_blockSize>1000000 ) m_blockSize = 1000000;
     std::cout<<" Transferring data with a chunk size of "<<m_blockSize<<std::endl;
   } else {
 	m_blockSize = 20000;
   }
+  std::cout<<" Transferring data with a chunk size of "<<m_blockSize<<std::endl;
   // data server  
   p_server = servInt;    	
 
@@ -112,7 +113,7 @@ void TDAQServerBase::runServer(){  // contains code from slowInfo and dostuff
 		  msgcounter++;
           m_slowBuffer[len] = 0;
 		  m_numChars = len;
-//          std::cout<<"received - "<<m_slowBuffer<<std::endl;
+          std::cout<<"received - "<<m_slowBuffer<< " length="<<len<<std::endl;
           
           if( msgcounter<20 ) 
 			std::cout<<"runServer :: Here is the message: "<<m_slowBuffer<<std::endl;
@@ -159,6 +160,9 @@ void TDAQServerBase::configure(){
 
   std::vector<uint32_t> param;
   loadVectorFromBuffer(param);
+  for(int i=0; i<param.size(); i+=2){
+	  cout<< "reg="<<param[i]<<" - value="<<(std::hex)<<param[i+1]<<std::endl;
+  }
   p_server->configure(param);  // here a vector<int> is needed!!
   
   char line[256];
@@ -299,10 +303,10 @@ void TDAQServerBase::loadVectorFromBuffer(vector<uint32_t> & param){
 	uint32_t value;
     for(int i=0; i<numInts; i++){
 	  value = *p;
-	  if( value<0x2000 ){
+//	  if( value<0x2000 ){
         param.push_back(*p);
         p++;
-	  }
+//	  }
     }
   } else {
     param.push_back(0);

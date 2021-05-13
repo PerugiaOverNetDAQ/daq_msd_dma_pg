@@ -57,10 +57,11 @@ uint32_t SOCSimuServerInterface::wordsAvailable(){
 
 void SOCSimuServerInterface::readData(std::vector<uint32_t>& evt, int /*maxValues*/){ // ?? maxValues not used
   // if ( m_verbose )  std::cout << "SOCSimuServerInterface::readData copying " << events.size() << " bytes " << std::endl;
-  evt = events;
+  evt.insert(evt.end(), events.begin(), events.end());
   events.erase(events.begin(),events.end());
 
   generateEvents(); // produce the next bunch
+  usleep(100000); // wait a little bit....
 }
 
 
@@ -90,26 +91,26 @@ void SOCSimuServerInterface::generateEvents(){
             
     // filling randomly the event
     //Add time infos: seconds and microseconds from the epoch
-    timeval tv;
-    gettimeofday( &tv, 0);
+//    timeval tv;
+//    gettimeofday( &tv, 0);
     
     // Event header
-    events.push_back( nWords );
+    events.push_back( nWords+8+8 );
     events.push_back( 0xeadebaba);
     events.push_back( 0x00eade00);
     events.push_back( (uint32_t)totalEvents ) ;
-    events.push_back( (uint32_t)tv.tv_sec );
-    events.push_back( (uint32_t)tv.tv_usec );
+    events.push_back( (uint32_t)totalEvents*2 );
+    events.push_back( (uint32_t)totalEvents*16 );
 	
 	// generator event header
-    events.push_back( nWords-8);
+    events.push_back( nWords+8);
     events.push_back( 0xaaaaaaaa);
     events.push_back( 0xbbbbbbbb);
     events.push_back( 0xcccccccc);
     events.push_back( 0xdddddddd);
 
     // Event data
-    for ( unsigned int j = 0; j<nWords-9; j++ ) {   
+    for ( unsigned int j = 0; j<nWords; j++ ) {   
       uint32_t value = 
 	0xaa000000 | ((totalEvents% 256)<<16) | (uint32_t)(rand() %20 +1); 
       events.push_back( value );
