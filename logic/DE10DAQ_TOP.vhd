@@ -1,6 +1,6 @@
 -- -----------------------------------------------------------------------
 -- SOC-FPGA system
--- -----------------------------------------------------------------------          
+-- -----------------------------------------------------------------------
 
 library IEEE;
     use IEEE.std_logic_1164.all;
@@ -9,7 +9,7 @@ use work.DAQ_Package.all;
 
 use work.basic_package.all;
 use work.FOOTpackage.all;
-			
+
 -- ----------------------------------------------
 entity DE10DAQ_TOP is
 ------------------------------------------------
@@ -18,14 +18,14 @@ entity DE10DAQ_TOP is
 	 FPGA_CLK1_50    : in     std_logic; -- System clock 1 (50 MHz)
     FPGA_CLK2_50    : in     std_logic; -- System clock 2 (50 MHz)
     FPGA_CLK3_50    : in     std_logic; -- System clock 3 (50 MHz)
-	 
+
 	 -- Keys
 	 KEY : in std_logic_vector(1 downto 0);
 	 -- Leds
     LED : out std_logic_vector(7 downto 0);
 	 -- Switches
     SW  : in  std_logic_vector(3 downto 0);
-	 
+
 	--Detector side A
     oNC_A           : out std_logic;  --GPIO1-16
     oFE_A_TEST      : out std_logic;  --GPIO1-0
@@ -66,14 +66,14 @@ entity DE10DAQ_TOP is
     iADC_B_SDATA4   : in  std_logic;  --GPIO1-35
     -- Central Acquisition side
     iBCO_CLK    : in  std_logic;      --GPIO0-16
-    iBCO_CLK_n  : in  std_logic;      --GPIO0-18
+    iBCO_CLK_n  : out  std_logic;     --GPIO0-18
     iBCO_RST    : in  std_logic;      --GPIO0-0
-    iBCO_RST_n  : in  std_logic;      --GPIO0-2
+    iBCO_RST_n  : out  std_logic;     --GPIO0-2
     iEXT_TRIG   : in  std_logic;      --GPIO0-32
-    iEXT_TRIG_n : in  std_logic;      --GPIO0-35
+    iEXT_TRIG_n : out  std_logic;     --GPIO0-35
     oBUSY       : out std_logic;      --GPIO0-1
     oBUSY_n     : out std_logic;      --GPIO0-4
-    --
+
     oHK         : out std_logic_vector(27 downto 0);  --All the remainings
 
 	 -- ADC
@@ -81,7 +81,7 @@ entity DE10DAQ_TOP is
     ADC_SCK    : out std_logic;
     ADC_SDI    : out std_logic;
     ADC_SDO    : in std_logic;
-	
+
 	 -- HPS
     HPS_CONV_USB_N : inout std_logic;
     HPS_DDR3_ADDR : out std_logic_vector(14 downto 0);
@@ -99,7 +99,7 @@ entity DE10DAQ_TOP is
     HPS_DDR3_RAS_N : out std_logic;
     HPS_DDR3_RESET_N : out std_logic;
     HPS_DDR3_RZQ : in std_logic;
-    HPS_DDR3_WE_N : out std_logic;	
+    HPS_DDR3_WE_N : out std_logic;
     HPS_ENET_GTX_CLK : out std_logic;
     HPS_ENET_INT_N : inout std_logic;
     HPS_ENET_MDC : out std_logic;
@@ -133,7 +133,7 @@ entity DE10DAQ_TOP is
     HPS_USB_STP : out std_logic
   );
 end entity DE10DAQ_TOP;
-	  
+
 -----------------------------------------------------------------
 architecture structural of DE10DAQ_TOP is
 -----------------------------------------------------------------
@@ -141,8 +141,8 @@ architecture structural of DE10DAQ_TOP is
   signal Clock, Reset, nReset : std_logic := '0';
   constant nResetFixed : std_logic := '1';
   signal nColdReset, nWarmReset, nDebugReset : std_logic :='0';
-  
-  
+
+
    -- GPIO connections
   signal sFeA       : tFpga2FeIntf;
   signal sFeB       : tFpga2FeIntf;
@@ -157,15 +157,15 @@ architecture structural of DE10DAQ_TOP is
   signal sBusy : std_logic;
   signal sErrors : std_logic;
   signal sDebug : std_logic_vector(7 downto 0);
-  
-  
+
+
 
   -- IO HPS-FPGA
   signal stm_hwevents  : std_logic_vector(27 downto 0);
   signal ledreg  : std_logic_vector(7 downto 0);
-  signal KEYE : std_logic_vector(3 downto 0) := "0000";   
-  signal SWD : std_logic_vector(3 downto 0) := "0000";   
-  
+  signal KEYE : std_logic_vector(3 downto 0) := "0000";
+  signal SWD : std_logic_vector(3 downto 0) := "0000";
+
   -- for fifo IO
   signal iofifo_datain    :  std_logic_vector(31 downto 0);                       -- datain
   signal iofifo_writereq  :  std_logic;                                           -- writereq
@@ -176,14 +176,14 @@ architecture structural of DE10DAQ_TOP is
   signal iofifo_regdataout   :  std_logic_vector(31 downto 0) := (others => 'X'); -- regdataout
   signal iofifo_regreadack   :  std_logic;                                        -- regreadack
   signal iofifo_regoutstatus :  std_logic_vector(31 downto 0) := (others => 'X'); -- regoutstatus
-  
+
   -- for RAM module
   signal fpga_side_RAM_ctrl_reg, hps_side_RAM_ctrl_reg : std_logic_vector(31 downto 0) := (others => 'X');
   signal SDRAM_interface_enable, fifo_readack_from_RAM, event_fifo_empty : std_logic := '0';
-  
+
   -- ADC
   signal adc_raw_values : adc_values_t := (others => "000000000000");
-  
+
   -- ADC controller IP
   component ADC_controller_IP is
     port (
@@ -305,15 +305,18 @@ architecture structural of DE10DAQ_TOP is
   end component soc_system;
 
 begin
-  
-  -- Main clock and resets			
-  Clock <= FPGA_CLK1_50; -- From external part		
+
+  -- Main clock and resets
+  Clock <= FPGA_CLK1_50; -- From external part
   Reset <= not(nReset);  -- From HPS
 
-  
-  
+
+
   -- GPIO connections ----------------------------------------------------------
   oNC_A           <= '0';
+  iBCO_CLK_n      <= '0';
+  iBCO_RST_n      <= '0';
+  iEXT_TRIG_n     <= '0';
   oFE_A_TEST      <= sFeA.TestOn;
   oFE_A_RESET     <= sFeA.DRst;
   oFE_A0_HOLD     <=  not sFeA.Hold;
@@ -346,7 +349,7 @@ begin
   sMultiAdc(7).SData <= iADC_B_SDATA2;
   sMultiAdc(8).SData <= iADC_B_SDATA3;
   sMultiAdc(9).SData <= iADC_B_SDATA4;
- 
+
  -- Central Acquisition side
   BCO_CLK_SYNCH : sync_edge
     generic map (
@@ -386,7 +389,7 @@ begin
   begin
     if rising_edge(clock) then
       oBUSY <= sBusy;
-      oBUSY_n <= not (sBusy);
+      oBUSY_n <= '0';
       --!@todo synchronize also the ADC incoming data and the CD and SCLK ret
     end if;
   end process IOFFD;
@@ -396,11 +399,11 @@ begin
   oHK(27 downto 8)  <= sBcoClkSynch & sBcoRstSynch & sExtTrgSynch
                        & iofifo_readack & sErrors
                        & "000" & x"000";
-  ------------------------------------------------------------------------------ 
-  
-  
-  
-  
+  ------------------------------------------------------------------------------
+
+
+
+
   u0 : component soc_system
   port map (
     clk_clk                               => Clock,                                              --                            clk.clk
@@ -459,14 +462,14 @@ begin
 	 -- HPS I2C1
     hps_0_hps_io_hps_io_i2c1_inst_SDA     => HPS_I2C1_SDAT,                                      --                               .hps_io_i2c1_inst_SDA
     hps_0_hps_io_hps_io_i2c1_inst_SCL     => HPS_I2C1_SCLK,                                      --                               .hps_io_i2c1_inst_SCL
-	 -- GPIO 
+	 -- GPIO
     hps_0_hps_io_hps_io_gpio_inst_GPIO09  => HPS_CONV_USB_N,                                     --                               .hps_io_gpio_inst_GPIO09
     hps_0_hps_io_hps_io_gpio_inst_GPIO35  => HPS_ENET_INT_N,                                     --                               .hps_io_gpio_inst_GPIO35
     hps_0_hps_io_hps_io_gpio_inst_GPIO40  => HPS_LTC_GPIO,                                       --                               .hps_io_gpio_inst_GPIO40
     hps_0_hps_io_hps_io_gpio_inst_GPIO53  => HPS_LED,                                            --                               .hps_io_gpio_inst_GPIO53
     hps_0_hps_io_hps_io_gpio_inst_GPIO54  => HPS_KEY,                                            --                               .hps_io_gpio_inst_GPIO54
     hps_0_hps_io_hps_io_gpio_inst_GPIO61  => HPS_GSENSOR_INT,                                    --                               .hps_io_gpio_inst_GPIO61
-	
+
 	 -- HPS DDR3
     memory_mem_a                          => HPS_DDR3_ADDR,                                      --                         memory.mem_a
     memory_mem_ba                         => HPS_DDR3_BA,                                        --                               .mem_ba
@@ -484,7 +487,7 @@ begin
     memory_mem_odt                        => HPS_DDR3_ODT,                                       --                               .mem_odt
     memory_mem_dm                         => HPS_DDR3_DM,                                        --                               .mem_dm
     memory_oct_rzqin                      => HPS_DDR3_RZQ,                                       --                               .oct_rzqin
-	
+
 	 -- HPS Parallel I/O and user modules
     button_pio_external_connection_export => KEYE,      -- button_pio_external_connection.export
     dipsw_pio_external_connection_export  => SWD,       --  dipsw_pio_external_connection.export
@@ -514,7 +517,7 @@ begin
   FPGA0: entity work.FPGATop
   port map (
     --Inputs
-    Clock => Clock,  
+    Clock => Clock,
     Reset => Reset,
 	 KEY => KEY,
 	 adc_raw_values => adc_raw_values,
@@ -541,7 +544,7 @@ begin
     button_pio         => KEYE,
     dipsw_pio          => SWD,
     led_pio            => ledreg,
-    iofifo_datain      => iofifo_datain, 
+    iofifo_datain      => iofifo_datain,
     iofifo_writereq    => iofifo_writereq,
     iofifo_instatus    => iofifo_instatus,
     iofifo_dataout     => iofifo_dataout,
@@ -556,7 +559,7 @@ begin
 	fpga_side_RAM_ctrl_reg => fpga_side_RAM_ctrl_reg,
 	hps_side_RAM_ctrl_reg => hps_side_RAM_ctrl_reg
   );
-  
+
   -- ADC Controller
   adc_0 : component ADC_controller_IP
     port map (
@@ -578,7 +581,7 @@ begin
 		ADC_DIN  => ADC_SDI   --                   .DIN
   );
 
-  -- 
+  --
   --  Cold, Warm and Debug RESETs
   --
   process(Clock)
@@ -607,12 +610,12 @@ begin
 	     counter :=1;
 	   elsif counter > 0 and counter<100 then
         counter := counter+1;
-	   else 
+	   else
 	     counter := 0;
 	   end if;
 	   oldRes := Reset;
 	 end if;
   end process;
-  
-						
+
+
 end architecture structural;

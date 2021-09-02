@@ -147,8 +147,8 @@ begin
 	   Ethernet_Wrreq => Ethernet_Wrreq,
 	   Ethernet_DataIn => Ethernet_DataIn,	  
 		-- Signals from GPIO --
-	   BCOClock => BCOClock,
-	   BCOReset => BCOReset,
+	   BCOClock => iBcoClk,
+	   BCOReset => iBcoRst,
 	   Trigger => MainTrigger,
       -- To State Signals --
 	   TowardRun => '0', --SWD(0),

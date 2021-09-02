@@ -8,7 +8,7 @@ use work.FOOTpackage.all;
 package DAQ_Package is
 
   -- Contained in monitor register 0  (abs reg 16)
-  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100209";
+  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100300";
 
   constant N_MONITOR_REGS : natural := 16; -- Number of mapped monitor registers
   constant N_CONTROL_REGS : natural := 16; -- Number of mapped control registers
@@ -17,7 +17,7 @@ package DAQ_Package is
   type CONTROL_REGS_T is ARRAY (0 to N_CONTROL_REGS-1) of
                          STD_LOGIC_VECTOR(31 downto 0);
   type MONITOR_REGS_T is ARRAY (0 to N_MONITOR_REGS-1) of
-                         STD_LOGIC_VECTOR(31 downto 0); 
+                         STD_LOGIC_VECTOR(31 downto 0);
   -- State of the Main Finite State Machine --
   type MainFSM_state is (Idle, Config, PrepareForRun, Run, EndOfRun, WaitingEmptyFifo);
 

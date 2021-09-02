@@ -319,7 +319,7 @@ begin
   --end process;
 
 
-   --!@todo Connect the sCntOut flags
+  --!@todo Connect the sCntOut flags
   --!@brief Top module that instantiates multiAdcPlaneInterface and Data_Builder
   DB : Data_Builder_Top
     port map(
@@ -327,7 +327,7 @@ begin
       iRST         => Reset or sRstFromFsm or (not sRunningFromFsm), --!Main reset
       -- control interface
       iEN          => Enable and sRunningFromFsm, --!Enable
-      iTRIG        => Trigger,          --!External trigger
+      iTRIG        => internalTrigger,  --!External trigger
       oCNT         => sCntOut,          --!Control signals in output
       oCAL_TRIG    => sTrigInt,         --!Internal trigger output
       iMSD_CONFIG  => sReg_msd_config,  --!Configuration from the control registers
