@@ -40,42 +40,42 @@ set_location_assignment PIN_AD4 -to ADC_SDO
 # GPIO
 #============================================================
 #Central TDAQ
-set_location_assignment PIN_V12 -to iBCO_RST
-set_location_assignment PIN_E8 -to oBUSY
-set_location_assignment PIN_W12 -to iBCO_RST_n
-set_location_assignment PIN_D11 -to oHK[0]
-set_location_assignment PIN_D8 -to oBUSY_n
-set_location_assignment PIN_AH13 -to oHK[1]
-set_location_assignment PIN_AF7 -to oHK[2]
-set_location_assignment PIN_AH14 -to oHK[3]
-set_location_assignment PIN_AF4 -to oHK[4]
-set_location_assignment PIN_AH3 -to oHK[5]
-set_location_assignment PIN_AD5 -to oHK[6]
-set_location_assignment PIN_AG14 -to oHK[7]
-set_location_assignment PIN_AE23 -to oHK[8]
-set_location_assignment PIN_AE6 -to oHK[9]
-set_location_assignment PIN_AD23 -to oHK[10]
-set_location_assignment PIN_AE24 -to oHK[11]
-set_location_assignment PIN_D12 -to iBCO_CLK
-set_location_assignment PIN_AD20 -to oHK[12]
-set_location_assignment PIN_C12 -to iBCO_CLK_n
-set_location_assignment PIN_AD17 -to oHK[13]
-set_location_assignment PIN_AC23 -to oHK[14]
-set_location_assignment PIN_AC22 -to oHK[15]
-set_location_assignment PIN_Y19 -to oHK[16]
-set_location_assignment PIN_AB23 -to oHK[17]
-set_location_assignment PIN_AA19 -to oHK[18]
-set_location_assignment PIN_W11 -to oHK[19]
-set_location_assignment PIN_AA18 -to oHK[20]
-set_location_assignment PIN_W14 -to oHK[21]
-set_location_assignment PIN_Y18 -to oHK[22]
-set_location_assignment PIN_Y17 -to oHK[23]
-set_location_assignment PIN_AB25 -to oHK[24]
-set_location_assignment PIN_AB26 -to oHK[25]
-set_location_assignment PIN_Y11 -to iEXT_TRIG
-set_location_assignment PIN_AA26 -to oHK[26]
-set_location_assignment PIN_AA13 -to oHK[27]
-set_location_assignment PIN_AA11 -to iEXT_TRIG_n
+set_location_assignment PIN_V12 -to  oHK[0]
+set_location_assignment PIN_E8 -to   oHK[1]
+set_location_assignment PIN_W12 -to  oHK[2]
+set_location_assignment PIN_D11 -to  oHK[3]
+set_location_assignment PIN_D8 -to   oHK[4]
+set_location_assignment PIN_AH13 -to oHK[5]
+set_location_assignment PIN_AF7 -to  oHK[6]
+set_location_assignment PIN_AH14 -to oHK[7]
+set_location_assignment PIN_AF4 -to  oHK[8]
+set_location_assignment PIN_AH3 -to  oHK[9]
+set_location_assignment PIN_AD5 -to  oHK[10]
+set_location_assignment PIN_AG14 -to oHK[11]
+set_location_assignment PIN_AE23 -to oHK[12]
+set_location_assignment PIN_AE6 -to  oHK[13]
+set_location_assignment PIN_AD23 -to oHK[14]
+set_location_assignment PIN_AE24 -to oHK[15]
+set_location_assignment PIN_D12 -to  oHK[16]
+set_location_assignment PIN_AD20 -to oHK[17]
+set_location_assignment PIN_C12 -to  oHK[18]
+set_location_assignment PIN_AD17 -to oHK[19]
+set_location_assignment PIN_AC23 -to oHK[20]
+set_location_assignment PIN_AC22 -to oHK[21]
+set_location_assignment PIN_Y19 -to  oHK[22]
+set_location_assignment PIN_AB23 -to oHK[23]
+set_location_assignment PIN_AA19 -to oHK[24]
+set_location_assignment PIN_W11 -to  oHK[25]
+set_location_assignment PIN_AA18 -to oHK[26]
+set_location_assignment PIN_W14 -to  oHK[27]
+set_location_assignment PIN_Y18 -to  oBUSY_n
+set_location_assignment PIN_Y17 -to  iBCO_RST_n
+set_location_assignment PIN_AB25 -to iBCO_RST
+set_location_assignment PIN_AB26 -to oBUSY
+set_location_assignment PIN_Y11 -to  iBCO_CLK_n
+set_location_assignment PIN_AA26 -to iEXT_TRIG
+set_location_assignment PIN_AA13 -to iEXT_TRIG_n
+set_location_assignment PIN_AA11 -to iBCO_CLK
 
 #set_location_assignment PIN_V12 -to GPIO_0[0]
 #set_location_assignment PIN_E8 -to GPIO_0[1]
@@ -726,7 +726,6 @@ set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/basic_packag
 set_global_assignment -name VHDL_FILE logic/msdintf/ADC_interface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/FE_interface.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE logic/msdintf/FOOTpackage.vhd -hdl_version VHDL_2008
-set_global_assignment -name VHDL_FILE logic/msdintf/HalfPlane_interface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/multiAdcPlaneInterface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/multiADC_interface.vhd
 set_global_assignment -name ENABLE_SIGNALTAP ON
