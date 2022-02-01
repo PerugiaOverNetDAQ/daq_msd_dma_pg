@@ -340,8 +340,8 @@ begin
       oADC1        => soADC1,           --!Output signals to the ADC2
       -- to event builder signals
       oDATA        => data_from_msd_temp,
-      DATA_VALID   => internalData_Valid,
-      END_OF_EVENT => internalEndOfEvent
+      oDATA_VALID   => internalData_Valid,
+      oEND_OF_EVENT => internalEndOfEvent
       );
 
 

@@ -76,7 +76,8 @@ package DAQ_Package is
     := cCFG_PLANE & cTRG2HOLD; --feCfg_trg2Hold
   constant CtrlReg10 : std_logic_vector (31 downto 0)
     := cTRG_PERIOD; --intTrgPeriod
-  constant CtrlReg11 : std_logic_vector (31 downto 0) := x"00000000";
+  constant CtrlReg11 : std_logic_vector (31 downto 0) := x"0000" & cADC_DELAY;
+  --adcDelay
   constant CtrlReg12 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg13 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg14 : std_logic_vector (31 downto 0) := x"00000000";
@@ -138,6 +139,7 @@ package DAQ_Package is
   constant adcClk         : natural := 8;
   constant feCfg_trg2Hold : natural := 9;
   constant intTrgPeriod   : natural := 10;
+  constant adcDelay   : natural := 11;
   -- Monitor Register Map and Flag map --
   constant Firmware_Reg : natural := 0;
   constant FSM_StatusSignals_Reg : natural := 1;
