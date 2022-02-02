@@ -192,7 +192,7 @@ architecture structural of DAQ_OnFPGA is
   signal siMULTI_ADC      : tMultiAdc2FpgaIntf;
 
   signal data_from_msd      : unsigned (31 downto 0);
-  signal data_from_msd_temp : tAllFifoOut_ADC;
+  signal data_from_msd_temp : tCollFifoOut;
   signal Busy_Out_DM        : std_logic;
   signal Errors_DM          : std_logic;
 
@@ -339,7 +339,7 @@ begin
       oFE1         => soFE1,            --!Output signals to the FE2
       oADC1        => soADC1,           --!Output signals to the ADC2
       -- to event builder signals
-      oDATA        => data_from_msd_temp,
+      oCOLL_FIFO    => data_from_msd_temp,
       oDATA_VALID   => internalData_Valid,
       oEND_OF_EVENT => internalEndOfEvent
       );

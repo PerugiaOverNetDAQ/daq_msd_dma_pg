@@ -722,6 +722,7 @@ set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/edge_detecto
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/delay_timer.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/counter.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/clock_divider.vhd
+set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/clock_divider_2.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/basic_package.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE logic/msdintf/ADC_interface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/FE_interface.vhd -hdl_version VHDL_2008
