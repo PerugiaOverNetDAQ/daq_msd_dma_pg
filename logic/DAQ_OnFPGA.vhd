@@ -290,8 +290,6 @@ begin
      -- EndOfEvent => EndOfEventFromSimulator
   --  );
 
-  Trigger_Out <= internalTrigger;
-
   --ES_dummy : Event_Simulator_dummy-- This will be replaced by the real sensor interface from Perugia
    --port map(
      -- Clock => Clock,

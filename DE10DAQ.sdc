@@ -49,6 +49,9 @@ create_clock -name {HPS_DDR3_DQS_P[1]_IN} -period 2.500 -waveform { 0.000 1.250 
 create_clock -name {HPS_DDR3_DQS_P[2]_IN} -period 2.500 -waveform { 0.000 1.250 } [get_ports {HPS_DDR3_DQS_P[2]}] -add
 create_clock -name {HPS_DDR3_DQS_P[3]_IN} -period 2.500 -waveform { 0.000 1.250 } [get_ports {HPS_DDR3_DQS_P[3]}] -add
 
+create_clock -name {HPS_I2C0_SCLK} -period 10.000 -waveform { 0.000 5.000 } [get_ports {HPS_I2C0_SCLK}]
+create_clock -name {HPS_I2C1_SCLK} -period 10.000 -waveform { 0.000 5.000 } [get_ports {HPS_I2C1_SCLK}]
+create_clock -name {HPS_USB_CLKOUT} -period 5.000 -waveform { 0.000 2.500 } [get_ports {HPS_USB_CLKOUT}]
 
 #**************************************************************
 # Create Generated Clock

@@ -70,7 +70,7 @@ architecture structural of FPGATop is
 
   signal ledst   : std_logic_vector(7 downto 0);
   
-  signal longerReadAck, longerEndOfEvent, longerTrigger : std_logic := '0';
+  signal longerTrigger : std_logic := '0';
 
   -- From DAQModule 
   signal Data_Stream : std_logic_vector (31 downto 0);  
@@ -131,6 +131,7 @@ begin
   -- Maintrigger can be sent via a key (debug) or via an external pin
   MainTrigger <= MainTriggerKey or iExtTrig; -- or randomtrigger;  --!@todo trigger is an OR!! FOR THE MOMENT ONLY!! (From Bologna)
 
+  oErrors <= Errors;
   
   --
   --  DAQ Module
@@ -344,8 +345,6 @@ begin
   -- make some signals longer so that they become suitable for LED pulses
   lp1: entity work.LongerPulse
        port map( Clk=>Clock, Reset=>Reset,  pulse=>MainTrigger,   longPulse=>longerTrigger );
-  lp2: entity work.LongerPulse
-       port map( Clk=>Clock, Reset=>Reset,  pulse=>fifo_readack,  longPulse=>longerReadAck );
  	
   -- Out to LEDs
   ledst <= Busy_Out & almost_full & not(empty) & longerTrigger & Led_State & Errors;

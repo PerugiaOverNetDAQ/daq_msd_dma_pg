@@ -1,14 +1,16 @@
 # Git submodule workflow
 1. Clone the repository with the `--recursive` option:
-  - `git clone --recursive git@bitbucket.org:msfoot/daq_msd_pg.git`
-1. To update the repository run:
   ```
-  git pull
-  git submodule update
+  git clone --recursive git@github.com:PerugiaOverNetDAQ/daq_msd_dma_pg.git
   ```
-1. If you already have cloned the repository:
+2. If you already have cloned the repository without the `--recursive` flag:
   ```
   git submodule init
+  git submodule update
+  ```
+3. To update the repository:
+  ```
+  git pull
   git submodule update
   ```
 
