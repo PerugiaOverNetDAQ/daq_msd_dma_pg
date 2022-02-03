@@ -5,7 +5,7 @@
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
 set_global_assignment -name TOP_LEVEL_ENTITY DE10DAQ_TOP
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:14:54 MARCH 04,2015"
 set_global_assignment -name DEVICE_FILTER_PACKAGE UFBGA
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 672
@@ -40,39 +40,39 @@ set_location_assignment PIN_AD4 -to ADC_SDO
 # GPIO
 #============================================================
 #Central TDAQ
-set_location_assignment PIN_V12 -to  oHK[0]
-set_location_assignment PIN_E8 -to   oHK[1]
-set_location_assignment PIN_W12 -to  oHK[2]
-set_location_assignment PIN_D11 -to  oHK[3]
-set_location_assignment PIN_D8 -to   oHK[4]
+set_location_assignment PIN_V12 -to oHK[0]
+set_location_assignment PIN_E8 -to oHK[1]
+set_location_assignment PIN_W12 -to oHK[2]
+set_location_assignment PIN_D11 -to oHK[3]
+set_location_assignment PIN_D8 -to oHK[4]
 set_location_assignment PIN_AH13 -to oHK[5]
-set_location_assignment PIN_AF7 -to  oHK[6]
+set_location_assignment PIN_AF7 -to oHK[6]
 set_location_assignment PIN_AH14 -to oHK[7]
-set_location_assignment PIN_AF4 -to  oHK[8]
-set_location_assignment PIN_AH3 -to  oHK[9]
-set_location_assignment PIN_AD5 -to  oHK[10]
+set_location_assignment PIN_AF4 -to oHK[8]
+set_location_assignment PIN_AH3 -to oHK[9]
+set_location_assignment PIN_AD5 -to oHK[10]
 set_location_assignment PIN_AG14 -to oHK[11]
 set_location_assignment PIN_AE23 -to oHK[12]
-set_location_assignment PIN_AE6 -to  oHK[13]
+set_location_assignment PIN_AE6 -to oHK[13]
 set_location_assignment PIN_AD23 -to oHK[14]
 set_location_assignment PIN_AE24 -to oHK[15]
-set_location_assignment PIN_D12 -to  oHK[16]
+set_location_assignment PIN_D12 -to oHK[16]
 set_location_assignment PIN_AD20 -to oHK[17]
-set_location_assignment PIN_C12 -to  oHK[18]
+set_location_assignment PIN_C12 -to oHK[18]
 set_location_assignment PIN_AD17 -to oHK[19]
 set_location_assignment PIN_AC23 -to oHK[20]
 set_location_assignment PIN_AC22 -to oHK[21]
-set_location_assignment PIN_Y19 -to  oHK[22]
+set_location_assignment PIN_Y19 -to oHK[22]
 set_location_assignment PIN_AB23 -to oHK[23]
 set_location_assignment PIN_AA19 -to oHK[24]
-set_location_assignment PIN_W11 -to  oHK[25]
+set_location_assignment PIN_W11 -to oHK[25]
 set_location_assignment PIN_AA18 -to oHK[26]
-set_location_assignment PIN_W14 -to  oHK[27]
-set_location_assignment PIN_Y18 -to  oBUSY_n
-set_location_assignment PIN_Y17 -to  iBCO_RST_n
+set_location_assignment PIN_W14 -to oHK[27]
+set_location_assignment PIN_Y18 -to oBUSY_n
+set_location_assignment PIN_Y17 -to iBCO_RST_n
 set_location_assignment PIN_AB25 -to iBCO_RST
 set_location_assignment PIN_AB26 -to oBUSY
-set_location_assignment PIN_Y11 -to  iBCO_CLK_n
+set_location_assignment PIN_Y11 -to iBCO_CLK_n
 set_location_assignment PIN_AA26 -to iEXT_TRIG
 set_location_assignment PIN_AA13 -to iEXT_TRIG_n
 set_location_assignment PIN_AA11 -to iBCO_CLK
@@ -666,7 +666,6 @@ set_global_assignment -name SMART_RECOMPILE ON
 
 
 
-set_global_assignment -name SIGNALTAP_FILE signal_tap/stp1.stp
 set_global_assignment -name QIP_FILE soc_system/synthesis/soc_system.qip
 set_global_assignment -name VHDL_FILE logic/Event_Simulator_dummy.vhd
 set_global_assignment -name VHDL_FILE logic/Trigger_generator.vhd
@@ -724,537 +723,8 @@ set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/counter.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/clock_divider.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/clock_divider_2.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/basic_functions/basic_package.vhd -hdl_version VHDL_2008
-set_global_assignment -name VHDL_FILE logic/msdintf/ADC_interface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/FE_interface.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE logic/msdintf/FOOTpackage.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE logic/msdintf/multiAdcPlaneInterface.vhd
 set_global_assignment -name VHDL_FILE logic/msdintf/multiADC_interface.vhd
-set_global_assignment -name ENABLE_SIGNALTAP ON
-set_global_assignment -name USE_SIGNALTAP_FILE signal_tap/stp1.stp
-set_global_assignment -name SIGNALTAP_FILE stp2.stp
-set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to FPGA_CLK1_50 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|DATA_VALID" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_detected" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[84] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[85] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[86] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[87] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[88] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[89] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[90] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[91] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[92] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[93] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[94] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[95] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[96] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[97] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[98] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[99] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[100] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[101] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[102] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[103] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[104] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[105] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[106] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[107] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[108] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[109] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[110] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[111] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[112] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[113] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[114] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[118] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[119] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[120] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[121] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[122] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[123] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[124] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[125] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|s_rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[126] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|s_wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[127] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.EVENT_END" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[128] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_1" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[129] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_2" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[130] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_3" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[131] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_1" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[132] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_2" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[133] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_3" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[134] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_4" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[135] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.IDLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[136] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.OUT_VALID" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[137] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.PKT_LENGTH" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[138] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.RESET" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[139] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.WRITE_WORD" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[140] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|END_OF_EVENT" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[141] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|iMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[142] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|iMULTI_FIFO[0].wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[143] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iCNT.slwClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[144] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iCNT.slwEn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[145] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iMULTI_ADC[0].SData" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[146] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[147] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[148] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[149] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[150] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[151] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[152] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[153] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[154] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[155] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[156] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[157] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[158] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[159] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[160] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[161] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[162] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[163] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[164] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.ASSERT_CS" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[165] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.IDLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[166] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.RESET" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[167] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.SAMPLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[168] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.WRITE_WORD" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[169] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iEN" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[170] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iRST" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[171] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iSHIFT" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[172] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[173] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[174] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[175] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[176] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[177] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[178] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[179] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[180] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[181] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[182] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[183] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[184] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[185] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[186] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[187] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[188] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].empty" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[189] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].full" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[190] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].q[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[191] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|iRD_REQ" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[192] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|iWR_REQ" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[193] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oEMPTY" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[194] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oFULL" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[195] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[196] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[197] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[198] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[199] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[200] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[201] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[202] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[203] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[204] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[205] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[206] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[207] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[208] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[209] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[210] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[211] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC0.Cs" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[212] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC0.SClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[213] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC1.Cs" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[214] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC1.SClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[215] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.Clk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[216] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.Hold" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[217] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.ShiftIn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[218] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.Clk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[219] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.Hold" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[220] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.ShiftIn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[221] -to "FPGATop:FPGA0|Reset" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[222] -to iADC_A_SDATA0 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[223] -to iADC_A_SDATA1 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[224] -to iADC_A_SDATA2 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[225] -to iADC_A_SDATA3 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[226] -to iADC_A_SDATA4 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[227] -to oADC_A_CS -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[228] -to oADC_A_SCLK -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[229] -to oFE_A0_CLK -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[230] -to oFE_A0_HOLD -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[231] -to oFE_A0_SHIFT -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|DATA_VALID" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|count[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_detected" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|data_long[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oDATA.q[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|oMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|iDATA[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[16]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[17]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[18]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[19]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[84] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[20]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[85] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[21]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[86] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[22]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[87] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[23]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[88] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[24]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[89] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[25]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[90] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[26]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[91] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[27]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[92] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[28]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[93] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[29]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[94] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[95] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[30]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[96] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[31]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[97] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[98] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[99] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[100] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[101] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[102] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[103] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oQ[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[104] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[105] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[106] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[107] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[108] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[109] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[110] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[111] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[112] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[113] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_R[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[114] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[118] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[119] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[120] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[121] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[122] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[123] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[124] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|parametric_fifo_dp:ADC_FIFO|oUSEDW_W[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[125] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|s_rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[126] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|s_wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[127] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.EVENT_END" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[128] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_1" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[129] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_2" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[130] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.FOOTER_3" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[131] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_1" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[132] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_2" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[133] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_3" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[134] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.HEADER_4" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[135] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.IDLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[136] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.OUT_VALID" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[137] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.PKT_LENGTH" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[138] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.RESET" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[139] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|Data_Builder:EVENT_BUILDER|state.WRITE_WORD" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[140] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|END_OF_EVENT" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[141] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|iMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[142] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|iMULTI_FIFO[0].wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[143] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iCNT.slwClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[144] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iCNT.slwEn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[145] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|iMULTI_ADC[0].SData" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[146] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[147] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[148] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[149] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[150] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[151] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[152] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[153] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[154] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[155] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[156] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[157] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[158] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[159] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[160] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[161] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].data[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[162] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].rd" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[163] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|oMULTI_FIFO[0].wr" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[164] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.ASSERT_CS" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[165] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.IDLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[166] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.RESET" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[167] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.SAMPLE" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[168] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|sAdcState.WRITE_WORD" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[169] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iEN" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[170] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iRST" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[171] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|iSHIFT" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[172] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[173] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[174] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[175] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[176] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[177] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[178] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[179] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[180] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[181] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[182] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[183] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[184] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[185] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[186] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[187] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|multiADC_interface:MultiADC_interface_i|shift_register:\\SR_GENERATE:0:sampler|oPAR_DATA[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[188] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].empty" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[189] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].full" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[190] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|oMULTI_FIFO[0].q[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[191] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|iRD_REQ" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[192] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|iWR_REQ" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[193] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oEMPTY" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[194] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oFULL" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[195] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[0]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[196] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[10]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[197] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[11]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[198] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[12]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[199] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[13]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[200] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[14]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[201] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[15]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[202] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[1]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[203] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[2]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[204] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[3]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[205] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[4]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[206] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[5]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[207] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[6]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[208] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[7]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[209] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[8]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[210] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|Data_Builder_Top:DB|multiAdcPlaneInterface:DETECTOR_INTERFACE|parametric_fifo_synch:\\FIFO_GENERATE:0:ADC_FIFO|oQ[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[211] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC0.Cs" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[212] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC0.SClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[213] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC1.Cs" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[214] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oADC1.SClk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[215] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.Clk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[216] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.Hold" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[217] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE0.ShiftIn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[218] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.Clk" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[219] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.Hold" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[220] -to "FPGATop:FPGA0|DAQ_OnFPGA:EvSim|oFE1.ShiftIn" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[221] -to "FPGATop:FPGA0|Reset" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[222] -to iADC_A_SDATA0 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[223] -to iADC_A_SDATA1 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[224] -to iADC_A_SDATA2 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[225] -to iADC_A_SDATA3 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[226] -to iADC_A_SDATA4 -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[227] -to oADC_A_CS -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[228] -to oADC_A_SCLK -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[229] -to oFE_A0_CLK -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[230] -to oFE_A0_HOLD -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[231] -to oFE_A0_SHIFT -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=232" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=232" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=232" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=722" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=4096" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=4096" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_PIPELINE=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_PIPELINE=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
-set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
