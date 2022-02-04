@@ -150,7 +150,6 @@ architecture structural of DE10DAQ_TOP is
   signal sAdcB      : tFpga2AdcIntf;
   signal sMultiAdc  : tMultiAdc2FpgaIntf;
 
-  signal sMultiAdcSynch : tMultiAdc2FpgaIntf;
   signal sBcoClkSynch : std_logic;
   signal sBcoRstSynch : std_logic;
   signal sExtTrgSynch : std_logic;
@@ -350,6 +349,13 @@ begin
   sMultiAdc(8).SData <= iADC_B_SDATA3;
   sMultiAdc(9).SData <= iADC_B_SDATA4;
 
+  RET_GEN : for gg in 0 to 4 generate
+    sMultiAdc(gg).clkRet   <= iADC_A_SCK_RET;
+    sMultiAdc(gg).csRet    <= iADC_A_CS_RET;
+    sMultiAdc(gg+5).clkRet <= iADC_B_SCK_RET;
+    sMultiAdc(gg+5).csRet  <= iADC_B_CS_RET;
+  end generate RET_GEN;
+
  -- Central Acquisition side
   BCO_CLK_SYNCH : sync_edge
     generic map (
@@ -384,13 +390,11 @@ begin
       oQ      => sExtTrgSynch
       );
 
-  sMultiAdcSynch <= sMultiAdc;
   IOFFD : process(Clock)
   begin
     if rising_edge(clock) then
       oBUSY <= sBusy;
       oBUSY_n <= '0';
-      --!@todo synchronize also the ADC incoming data and the CD and SCLK ret
     end if;
   end process IOFFD;
   --
@@ -530,7 +534,7 @@ begin
       oFE1                => sFeB,
       oADC0               => sAdcA,
       oADC1               => sAdcB,
-      iMULTI_ADC          => sMultiAdcSynch,
+      iMULTI_ADC          => sMultiAdc,
       --
       iBcoClk             => sBcoClkSynch,
       iBcoRst             => sBcoRstSynch,

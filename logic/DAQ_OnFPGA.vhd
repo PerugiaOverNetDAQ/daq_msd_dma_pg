@@ -189,7 +189,6 @@ architecture structural of DAQ_OnFPGA is
   signal soFE1            : tFpga2FeIntf;
   signal soADC0           : tFpga2AdcIntf;
   signal soADC1           : tFpga2AdcIntf;
-  signal siMULTI_ADC      : tMultiAdc2FpgaIntf;
 
   signal data_from_msd      : unsigned (31 downto 0);
   signal data_from_msd_temp : tCollFifoOut;
@@ -228,8 +227,6 @@ begin
   oCAL_TRIG   <= sTrigInt;
   Led_State   <= DAQ_State;
   Trigger_Out <= internalTrigger;
-
-  siMULTI_ADC <= iMULTI_ADC;
 
   Errors      <= Errors_DM or sCntOut.error;
   Busy_Out    <= Busy_Out_DM;
@@ -332,7 +329,7 @@ begin
       -- First FE-ADC chain ports
       oFE0         => soFE0,            --!Output signals to the FE1
       oADC0        => soADC0,           --!Output signals to the ADC1
-      iMULTI_ADC   => siMULTI_ADC,      --!Input signals from the ADC1
+      iMULTI_ADC   => iMULTI_ADC,       --!Input signals from the ADC1
       -- Second FE-ADC chain ports
       oFE1         => soFE1,            --!Output signals to the FE2
       oADC1        => soADC1,           --!Output signals to the ADC2
