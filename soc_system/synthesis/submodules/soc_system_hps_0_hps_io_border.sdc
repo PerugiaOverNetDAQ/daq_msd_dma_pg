@@ -1,72 +1,84 @@
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TX_CLK]
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TXD0]
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TXD1]
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TXD2]
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TXD3]
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RXD0] -to *
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_MDIO] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_MDIO]
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_MDC]
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RX_CTL] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_emac1_inst_TX_CTL]
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RX_CLK] -to *
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RXD1] -to *
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RXD2] -to *
-set_false_path -from [get_ports hps_io_hps_io_emac1_inst_RXD3] -to *
-set_false_path -from [get_ports hps_io_hps_io_sdio_inst_CMD] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_CMD]
-set_false_path -from [get_ports hps_io_hps_io_sdio_inst_D0] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_D0]
-set_false_path -from [get_ports hps_io_hps_io_sdio_inst_D1] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_D1]
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_CLK]
-set_false_path -from [get_ports hps_io_hps_io_sdio_inst_D2] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_D2]
-set_false_path -from [get_ports hps_io_hps_io_sdio_inst_D3] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_sdio_inst_D3]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D0] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D0]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D1] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D1]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D2] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D2]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D3] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D3]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D4] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D4]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D5] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D5]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D6] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D6]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_D7] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_D7]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_CLK] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_usb1_inst_STP]
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_DIR] -to *
-set_false_path -from [get_ports hps_io_hps_io_usb1_inst_NXT] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_spim1_inst_CLK]
-set_false_path -from * -to [get_ports hps_io_hps_io_spim1_inst_MOSI]
-set_false_path -from [get_ports hps_io_hps_io_spim1_inst_MISO] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_spim1_inst_SS0]
-set_false_path -from [get_ports hps_io_hps_io_uart0_inst_RX] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_uart0_inst_TX]
-set_false_path -from [get_ports hps_io_hps_io_i2c0_inst_SDA] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_i2c0_inst_SDA]
-set_false_path -from [get_ports hps_io_hps_io_i2c0_inst_SCL] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_i2c0_inst_SCL]
-set_false_path -from [get_ports hps_io_hps_io_i2c1_inst_SDA] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_i2c1_inst_SDA]
-set_false_path -from [get_ports hps_io_hps_io_i2c1_inst_SCL] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_i2c1_inst_SCL]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO09] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO09]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO35] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO35]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO40] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO40]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO53] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO53]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO54] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO54]
-set_false_path -from [get_ports hps_io_hps_io_gpio_inst_GPIO61] -to *
-set_false_path -from * -to [get_ports hps_io_hps_io_gpio_inst_GPIO61]
+#EMAC1
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_clk_tx}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_txd[0]}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_txd[1]}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_txd[2]}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_txd[3]}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_tx_oe}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_clk_rx}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_rxd[0]}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_rxd[1]}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_rxd[2]}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_rxd[3]}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_phy_rxdv}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_gmii_mdc}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_gmii_mdo_i}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|emac1_inst|emac_gmii_mdo_o}] #
+
+#SDIO
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_cmd_o}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_cmd_i}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_o[0]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_o[1]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_o[2]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_o[3]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_i[0]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_i[1]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_i[2]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|sdio_inst|sdmmc_data_i[3]}] #
+
+#USB1
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[0]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[1]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[2]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[3]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[4]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[5]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_o[6]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[0]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[1]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[2]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[3]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[4]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[5]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_data_i[6]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_clk}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_stp}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_dir}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|usb1_inst|usb_ulpi_nxt}]
+
+#SPIM1
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|spim1_inst|spi_master_sclk}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|spim1_inst|spi_master_txd}]
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|spim1_inst|spi_master_rxd}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|spim1_inst|spi_master_ss_0_n}]
+
+#UART0
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|uart0_inst|uart_rxd}]
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|uart0_inst|uart_txd}]
+
+#I2C0
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|i2c0_inst|i2c_data}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|i2c0_inst|i2c_data}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|i2c0_inst|i2c_clk}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|i2c0_inst|i2c_clk}] #
+
+#I2C1
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|i2c1_inst|i2c_data}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|i2c1_inst|i2c_data}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|i2c1_inst|i2c_clk}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|i2c1_inst|i2c_clk}] #
+
+#GPIO
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio0_porta_o[9]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio0_porta_o[9]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[6]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[6]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[11]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[11]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[24]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[24]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[25]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio1_porta_o[25]}] #
+set_false_path -from [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio2_porta_o[3]}] #
+set_false_path -to [get_pins {u0|hps_0|hps_io|border|gpio_inst|gpio2_porta_o[3]}] #
