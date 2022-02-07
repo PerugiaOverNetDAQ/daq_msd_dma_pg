@@ -581,41 +581,8 @@ begin
 		ADC_DIN  => ADC_SDI   --                   .DIN
   );
 
-  --
-  --  Cold, Warm and Debug RESETs
-  --
-  process(Clock)
-    variable oldRes : std_logic;
-	 variable counter : natural := 0;
-  begin
-    if rising_edge(Clock) then
-	 -- Generate different resets based on counter (see below)
-      if counter>1 and counter<4 then
-	     nWarmReset <= '0';-- short
-	   else
-	     nWarmReset <= '1';
-	   end if;
-      if counter>1 and counter<8 then
-	     nColdReset <= '0';-- longer
-	   else
-	     nColdReset <= '1';
-	   end if;
-      if counter>1 and counter<32 then
-	     nDebugReset <= '0';-- longest
-	   else
-	     nDebugReset <= '1';
-	   end if;
-		-- When rising edge on reset, start counting to 100, then reset and wait
-      if Reset='1' and oldRes='0' then
-	     counter :=1;
-	   elsif counter > 0 and counter<100 then
-        counter := counter+1;
-	   else
-	     counter := 0;
-	   end if;
-	   oldRes := Reset;
-	 end if;
-  end process;
-
-
+  nWarmReset  <= '1';
+  nColdReset  <= '1';
+  nDebugReset <= '1';
+  
 end architecture structural;
