@@ -140,8 +140,6 @@ architecture structural of DE10DAQ_TOP is
   -- system signals
   signal Clock, Reset, nReset : std_logic := '0';
   constant nResetFixed : std_logic := '1';
-  signal nColdReset, nWarmReset, nDebugReset : std_logic :='0';
-
 
    -- GPIO connections
   signal sFeA       : tFpga2FeIntf;
@@ -209,10 +207,7 @@ architecture structural of DE10DAQ_TOP is
       button_pio_external_connection_export : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
       clk_clk                               : in    std_logic                     := 'X';             -- clk
       dipsw_pio_external_connection_export  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
-      hps_0_f2h_cold_reset_req_reset_n      : in    std_logic                     := 'X';             -- reset_n
-      hps_0_f2h_debug_reset_req_reset_n     : in    std_logic                     := 'X';             -- reset_n
       hps_0_f2h_stm_hw_events_stm_hwevents  : in    std_logic_vector(27 downto 0) := (others => 'X'); -- stm_hwevents
-      hps_0_f2h_warm_reset_req_reset_n      : in    std_logic                     := 'X';             -- reset_n
       hps_0_h2f_reset_reset_n               : out   std_logic;                                        -- reset_n
       hps_0_hps_io_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
       hps_0_hps_io_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
@@ -408,10 +403,7 @@ begin
   port map (
     clk_clk                               => Clock,                                              --                            clk.clk
     reset_reset_n                         => nResetFixed,                                        --                          reset.reset_n
-    hps_0_f2h_cold_reset_req_reset_n      => nColdReset,                                         --       hps_0_f2h_cold_reset_req.reset_n
-    hps_0_f2h_debug_reset_req_reset_n     => nDebugReset,                                        --      hps_0_f2h_debug_reset_req.reset_n
     hps_0_f2h_stm_hw_events_stm_hwevents  => stm_hwevents,                                       --        hps_0_f2h_stm_hw_events.stm_hwevents
-    hps_0_f2h_warm_reset_req_reset_n      => nWarmReset,                                         --       hps_0_f2h_warm_reset_req.reset_n
     hps_0_h2f_reset_reset_n               => nReset,                                             --                hps_0_h2f_reset.reset_n
 	 -- HPS Ethernet
     hps_0_hps_io_hps_io_emac1_inst_TX_CLK => HPS_ENET_GTX_CLK,                                   --                   hps_0_hps_io.hps_io_emac1_inst_TX_CLK
@@ -580,9 +572,5 @@ begin
 		ADC_DOUT => ADC_SDO, --                   .DOUT
 		ADC_DIN  => ADC_SDI   --                   .DIN
   );
-
-  nWarmReset  <= '1';
-  nColdReset  <= '1';
-  nDebugReset <= '1';
   
 end architecture structural;

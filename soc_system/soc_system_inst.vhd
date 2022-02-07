@@ -3,10 +3,7 @@
 			button_pio_external_connection_export  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                                : in    std_logic                     := 'X';             -- clk
 			dipsw_pio_external_connection_export   : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
-			hps_0_f2h_cold_reset_req_reset_n       : in    std_logic                     := 'X';             -- reset_n
-			hps_0_f2h_debug_reset_req_reset_n      : in    std_logic                     := 'X';             -- reset_n
 			hps_0_f2h_stm_hw_events_stm_hwevents   : in    std_logic_vector(27 downto 0) := (others => 'X'); -- stm_hwevents
-			hps_0_f2h_warm_reset_req_reset_n       : in    std_logic                     := 'X';             -- reset_n
 			hps_0_h2f_reset_reset_n                : out   std_logic;                                        -- reset_n
 			hps_0_hps_io_hps_io_emac1_inst_TX_CLK  : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_0_hps_io_hps_io_emac1_inst_TXD0    : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
@@ -100,10 +97,7 @@
 			button_pio_external_connection_export  => CONNECTED_TO_button_pio_external_connection_export,  --  button_pio_external_connection.export
 			clk_clk                                => CONNECTED_TO_clk_clk,                                --                             clk.clk
 			dipsw_pio_external_connection_export   => CONNECTED_TO_dipsw_pio_external_connection_export,   --   dipsw_pio_external_connection.export
-			hps_0_f2h_cold_reset_req_reset_n       => CONNECTED_TO_hps_0_f2h_cold_reset_req_reset_n,       --        hps_0_f2h_cold_reset_req.reset_n
-			hps_0_f2h_debug_reset_req_reset_n      => CONNECTED_TO_hps_0_f2h_debug_reset_req_reset_n,      --       hps_0_f2h_debug_reset_req.reset_n
 			hps_0_f2h_stm_hw_events_stm_hwevents   => CONNECTED_TO_hps_0_f2h_stm_hw_events_stm_hwevents,   --         hps_0_f2h_stm_hw_events.stm_hwevents
-			hps_0_f2h_warm_reset_req_reset_n       => CONNECTED_TO_hps_0_f2h_warm_reset_req_reset_n,       --        hps_0_f2h_warm_reset_req.reset_n
 			hps_0_h2f_reset_reset_n                => CONNECTED_TO_hps_0_h2f_reset_reset_n,                --                 hps_0_h2f_reset.reset_n
 			hps_0_hps_io_hps_io_emac1_inst_TX_CLK  => CONNECTED_TO_hps_0_hps_io_hps_io_emac1_inst_TX_CLK,  --                    hps_0_hps_io.hps_io_emac1_inst_TX_CLK
 			hps_0_hps_io_hps_io_emac1_inst_TXD0    => CONNECTED_TO_hps_0_hps_io_hps_io_emac1_inst_TXD0,    --                                .hps_io_emac1_inst_TXD0
