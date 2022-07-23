@@ -2,10 +2,7 @@
 		.button_pio_external_connection_export  (<connected-to-button_pio_external_connection_export>),  //  button_pio_external_connection.export
 		.clk_clk                                (<connected-to-clk_clk>),                                //                             clk.clk
 		.dipsw_pio_external_connection_export   (<connected-to-dipsw_pio_external_connection_export>),   //   dipsw_pio_external_connection.export
-		.hps_0_f2h_cold_reset_req_reset_n       (<connected-to-hps_0_f2h_cold_reset_req_reset_n>),       //        hps_0_f2h_cold_reset_req.reset_n
-		.hps_0_f2h_debug_reset_req_reset_n      (<connected-to-hps_0_f2h_debug_reset_req_reset_n>),      //       hps_0_f2h_debug_reset_req.reset_n
 		.hps_0_f2h_stm_hw_events_stm_hwevents   (<connected-to-hps_0_f2h_stm_hw_events_stm_hwevents>),   //         hps_0_f2h_stm_hw_events.stm_hwevents
-		.hps_0_f2h_warm_reset_req_reset_n       (<connected-to-hps_0_f2h_warm_reset_req_reset_n>),       //        hps_0_f2h_warm_reset_req.reset_n
 		.hps_0_h2f_reset_reset_n                (<connected-to-hps_0_h2f_reset_reset_n>),                //                 hps_0_h2f_reset.reset_n
 		.hps_0_hps_io_hps_io_emac1_inst_TX_CLK  (<connected-to-hps_0_hps_io_hps_io_emac1_inst_TX_CLK>),  //                    hps_0_hps_io.hps_io_emac1_inst_TX_CLK
 		.hps_0_hps_io_hps_io_emac1_inst_TXD0    (<connected-to-hps_0_hps_io_hps_io_emac1_inst_TXD0>),    //                                .hps_io_emac1_inst_TXD0

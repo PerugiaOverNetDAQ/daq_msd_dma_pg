@@ -342,6 +342,8 @@ begin
   Register_msd_config.adcClkDuty   <= Control_Registers_Bus(adcClk)(31 downto 16);
   Register_msd_config.adcClkDiv    <= Control_Registers_Bus(adcClk)(15 downto 0);
   Register_msd_config.intTrgPeriod <= Control_Registers_Bus(intTrgPeriod);
+	Register_msd_config.adcDelay     <= Control_Registers_Bus(adcDelay_Busy)(15 downto 0);
+	Register_msd_config.extendBusy   <= Control_Registers_Bus(adcDelay_Busy)(31 downto 16);
   Register_msd_config.cfgPlane     <= Control_Registers_Bus(feCfg_trg2Hold)(31 downto 16);
   Register_msd_config.trg2Hold     <= Control_Registers_Bus(feCfg_trg2Hold)(15 downto 0);
 

@@ -138,10 +138,10 @@ end entity DE10DAQ_TOP;
 architecture structural of DE10DAQ_TOP is
 -----------------------------------------------------------------
   -- system signals
-  signal Clock, Reset, nReset : std_logic := '0';
+  signal Clock : std_logic := '0';
+  signal nReset : std_logic := '0';
+  signal fpgaTopRst, adcCtrlRst: std_logic := '0';
   constant nResetFixed : std_logic := '1';
-  signal nColdReset, nWarmReset, nDebugReset : std_logic :='0';
-
 
    -- GPIO connections
   signal sFeA       : tFpga2FeIntf;
@@ -209,10 +209,7 @@ architecture structural of DE10DAQ_TOP is
       button_pio_external_connection_export : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
       clk_clk                               : in    std_logic                     := 'X';             -- clk
       dipsw_pio_external_connection_export  : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
-      hps_0_f2h_cold_reset_req_reset_n      : in    std_logic                     := 'X';             -- reset_n
-      hps_0_f2h_debug_reset_req_reset_n     : in    std_logic                     := 'X';             -- reset_n
       hps_0_f2h_stm_hw_events_stm_hwevents  : in    std_logic_vector(27 downto 0) := (others => 'X'); -- stm_hwevents
-      hps_0_f2h_warm_reset_req_reset_n      : in    std_logic                     := 'X';             -- reset_n
       hps_0_h2f_reset_reset_n               : out   std_logic;                                        -- reset_n
       hps_0_hps_io_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
       hps_0_hps_io_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
@@ -308,8 +305,8 @@ begin
 
   -- Main clock and resets
   Clock <= FPGA_CLK1_50; -- From external part
-  Reset <= not(nReset);  -- From HPS
-
+  fpgaTopRst <= not(nReset); -- From HPS
+  adcCtrlRst <= not(nReset); -- From HPS
 
 
   -- GPIO connections ----------------------------------------------------------
@@ -406,95 +403,92 @@ begin
 
   u0 : component soc_system
   port map (
-    clk_clk                               => Clock,                                              --                            clk.clk
-    reset_reset_n                         => nResetFixed,                                        --                          reset.reset_n
-    hps_0_f2h_cold_reset_req_reset_n      => nColdReset,                                         --       hps_0_f2h_cold_reset_req.reset_n
-    hps_0_f2h_debug_reset_req_reset_n     => nDebugReset,                                        --      hps_0_f2h_debug_reset_req.reset_n
-    hps_0_f2h_stm_hw_events_stm_hwevents  => stm_hwevents,                                       --        hps_0_f2h_stm_hw_events.stm_hwevents
-    hps_0_f2h_warm_reset_req_reset_n      => nWarmReset,                                         --       hps_0_f2h_warm_reset_req.reset_n
-    hps_0_h2f_reset_reset_n               => nReset,                                             --                hps_0_h2f_reset.reset_n
+    clk_clk                               => Clock,               --                     clk.clk
+    reset_reset_n                         => nResetFixed,         --                   reset.reset_n
+    hps_0_f2h_stm_hw_events_stm_hwevents  => stm_hwevents,        -- hps_0_f2h_stm_hw_events.stm_hwevents
+    hps_0_h2f_reset_reset_n               => nReset,              --         hps_0_h2f_reset.reset_n
 	 -- HPS Ethernet
-    hps_0_hps_io_hps_io_emac1_inst_TX_CLK => HPS_ENET_GTX_CLK,                                   --                   hps_0_hps_io.hps_io_emac1_inst_TX_CLK
-    hps_0_hps_io_hps_io_emac1_inst_TXD0   => HPS_ENET_TX_DATA(0),                                --                               .hps_io_emac1_inst_TXD0
-    hps_0_hps_io_hps_io_emac1_inst_TXD1   => HPS_ENET_TX_DATA(1),                                --                               .hps_io_emac1_inst_TXD1
-    hps_0_hps_io_hps_io_emac1_inst_TXD2   => HPS_ENET_TX_DATA(2),                                --                               .hps_io_emac1_inst_TXD2
-    hps_0_hps_io_hps_io_emac1_inst_TXD3   => HPS_ENET_TX_DATA(3),                                --                               .hps_io_emac1_inst_TXD3
-    hps_0_hps_io_hps_io_emac1_inst_RXD0   => HPS_ENET_RX_DATA(0),                                --                               .hps_io_emac1_inst_RXD0
-    hps_0_hps_io_hps_io_emac1_inst_MDIO   => HPS_ENET_MDIO,                                      --                               .hps_io_emac1_inst_MDIO
-    hps_0_hps_io_hps_io_emac1_inst_MDC    => HPS_ENET_MDC,                                       --                               .hps_io_emac1_inst_MDC
-    hps_0_hps_io_hps_io_emac1_inst_RX_CTL => HPS_ENET_RX_DV,                                     --                               .hps_io_emac1_inst_RX_CTL
-    hps_0_hps_io_hps_io_emac1_inst_TX_CTL => HPS_ENET_TX_EN,                                     --                               .hps_io_emac1_inst_TX_CTL
-    hps_0_hps_io_hps_io_emac1_inst_RX_CLK => HPS_ENET_RX_CLK,                                    --                               .hps_io_emac1_inst_RX_CLK
-    hps_0_hps_io_hps_io_emac1_inst_RXD1   => HPS_ENET_RX_DATA(1),                                --                               .hps_io_emac1_inst_RXD1
-    hps_0_hps_io_hps_io_emac1_inst_RXD2   => HPS_ENET_RX_DATA(2),                                --                               .hps_io_emac1_inst_RXD2
-    hps_0_hps_io_hps_io_emac1_inst_RXD3   => HPS_ENET_RX_DATA(3),                                --                               .hps_io_emac1_inst_RXD3
+    hps_0_hps_io_hps_io_emac1_inst_TX_CLK => HPS_ENET_GTX_CLK,    --            hps_0_hps_io.hps_io_emac1_inst_TX_CLK
+    hps_0_hps_io_hps_io_emac1_inst_TXD0   => HPS_ENET_TX_DATA(0), --                        .hps_io_emac1_inst_TXD0
+    hps_0_hps_io_hps_io_emac1_inst_TXD1   => HPS_ENET_TX_DATA(1), --                        .hps_io_emac1_inst_TXD1
+    hps_0_hps_io_hps_io_emac1_inst_TXD2   => HPS_ENET_TX_DATA(2), --                        .hps_io_emac1_inst_TXD2
+    hps_0_hps_io_hps_io_emac1_inst_TXD3   => HPS_ENET_TX_DATA(3), --                        .hps_io_emac1_inst_TXD3
+    hps_0_hps_io_hps_io_emac1_inst_RXD0   => HPS_ENET_RX_DATA(0), --                        .hps_io_emac1_inst_RXD0
+    hps_0_hps_io_hps_io_emac1_inst_MDIO   => HPS_ENET_MDIO,       --                        .hps_io_emac1_inst_MDIO
+    hps_0_hps_io_hps_io_emac1_inst_MDC    => HPS_ENET_MDC,        --                        .hps_io_emac1_inst_MDC
+    hps_0_hps_io_hps_io_emac1_inst_RX_CTL => HPS_ENET_RX_DV,      --                        .hps_io_emac1_inst_RX_CTL
+    hps_0_hps_io_hps_io_emac1_inst_TX_CTL => HPS_ENET_TX_EN,      --                        .hps_io_emac1_inst_TX_CTL
+    hps_0_hps_io_hps_io_emac1_inst_RX_CLK => HPS_ENET_RX_CLK,     --                        .hps_io_emac1_inst_RX_CLK
+    hps_0_hps_io_hps_io_emac1_inst_RXD1   => HPS_ENET_RX_DATA(1), --                        .hps_io_emac1_inst_RXD1
+    hps_0_hps_io_hps_io_emac1_inst_RXD2   => HPS_ENET_RX_DATA(2), --                        .hps_io_emac1_inst_RXD2
+    hps_0_hps_io_hps_io_emac1_inst_RXD3   => HPS_ENET_RX_DATA(3), --                        .hps_io_emac1_inst_RXD3
 	 -- HPS SD Card
-    hps_0_hps_io_hps_io_sdio_inst_CMD     => HPS_SD_CMD,                                         --                               .hps_io_sdio_inst_CMD
-    hps_0_hps_io_hps_io_sdio_inst_D0      => HPS_SD_DATA(0),                                     --                               .hps_io_sdio_inst_D0
-    hps_0_hps_io_hps_io_sdio_inst_D1      => HPS_SD_DATA(1),                                     --                               .hps_io_sdio_inst_D1
-    hps_0_hps_io_hps_io_sdio_inst_CLK     => HPS_SD_CLK,                                         --                               .hps_io_sdio_inst_CLK
-    hps_0_hps_io_hps_io_sdio_inst_D2      => HPS_SD_DATA(2),                                     --                               .hps_io_sdio_inst_D2
-    hps_0_hps_io_hps_io_sdio_inst_D3      => HPS_SD_DATA(3),                                     --                               .hps_io_sdio_inst_D3
+    hps_0_hps_io_hps_io_sdio_inst_CMD     => HPS_SD_CMD,          --                        .hps_io_sdio_inst_CMD
+    hps_0_hps_io_hps_io_sdio_inst_D0      => HPS_SD_DATA(0),      --                        .hps_io_sdio_inst_D0
+    hps_0_hps_io_hps_io_sdio_inst_D1      => HPS_SD_DATA(1),      --                        .hps_io_sdio_inst_D1
+    hps_0_hps_io_hps_io_sdio_inst_CLK     => HPS_SD_CLK,          --                        .hps_io_sdio_inst_CLK
+    hps_0_hps_io_hps_io_sdio_inst_D2      => HPS_SD_DATA(2),      --                        .hps_io_sdio_inst_D2
+    hps_0_hps_io_hps_io_sdio_inst_D3      => HPS_SD_DATA(3),      --                        .hps_io_sdio_inst_D3
 	 -- HPS USB
-    hps_0_hps_io_hps_io_usb1_inst_D0      => HPS_USB_DATA(0),                                    --                               .hps_io_usb1_inst_D0
-    hps_0_hps_io_hps_io_usb1_inst_D1      => HPS_USB_DATA(1),                                    --                               .hps_io_usb1_inst_D1
-    hps_0_hps_io_hps_io_usb1_inst_D2      => HPS_USB_DATA(2),                                    --                               .hps_io_usb1_inst_D2
-    hps_0_hps_io_hps_io_usb1_inst_D3      => HPS_USB_DATA(3),                                    --                               .hps_io_usb1_inst_D3
-    hps_0_hps_io_hps_io_usb1_inst_D4      => HPS_USB_DATA(4),                                    --                               .hps_io_usb1_inst_D4
-    hps_0_hps_io_hps_io_usb1_inst_D5      => HPS_USB_DATA(5),                                    --                               .hps_io_usb1_inst_D5
-    hps_0_hps_io_hps_io_usb1_inst_D6      => HPS_USB_DATA(6),                                    --                               .hps_io_usb1_inst_D6
-    hps_0_hps_io_hps_io_usb1_inst_D7      => HPS_USB_DATA(7),                                    --                               .hps_io_usb1_inst_D7
-    hps_0_hps_io_hps_io_usb1_inst_CLK     => HPS_USB_CLKOUT,                                     --                               .hps_io_usb1_inst_CLK
-    hps_0_hps_io_hps_io_usb1_inst_STP     => HPS_USB_STP,                                        --                               .hps_io_usb1_inst_STP
-    hps_0_hps_io_hps_io_usb1_inst_DIR     => HPS_USB_DIR,                                        --                               .hps_io_usb1_inst_DIR
-    hps_0_hps_io_hps_io_usb1_inst_NXT     => HPS_USB_NXT,                                        --                               .hps_io_usb1_inst_NXT
+    hps_0_hps_io_hps_io_usb1_inst_D0      => HPS_USB_DATA(0),     --                        .hps_io_usb1_inst_D0
+    hps_0_hps_io_hps_io_usb1_inst_D1      => HPS_USB_DATA(1),     --                        .hps_io_usb1_inst_D1
+    hps_0_hps_io_hps_io_usb1_inst_D2      => HPS_USB_DATA(2),     --                        .hps_io_usb1_inst_D2
+    hps_0_hps_io_hps_io_usb1_inst_D3      => HPS_USB_DATA(3),     --                        .hps_io_usb1_inst_D3
+    hps_0_hps_io_hps_io_usb1_inst_D4      => HPS_USB_DATA(4),     --                        .hps_io_usb1_inst_D4
+    hps_0_hps_io_hps_io_usb1_inst_D5      => HPS_USB_DATA(5),     --                        .hps_io_usb1_inst_D5
+    hps_0_hps_io_hps_io_usb1_inst_D6      => HPS_USB_DATA(6),     --                        .hps_io_usb1_inst_D6
+    hps_0_hps_io_hps_io_usb1_inst_D7      => HPS_USB_DATA(7),     --                        .hps_io_usb1_inst_D7
+    hps_0_hps_io_hps_io_usb1_inst_CLK     => HPS_USB_CLKOUT,      --                        .hps_io_usb1_inst_CLK
+    hps_0_hps_io_hps_io_usb1_inst_STP     => HPS_USB_STP,         --                        .hps_io_usb1_inst_STP
+    hps_0_hps_io_hps_io_usb1_inst_DIR     => HPS_USB_DIR,         --                        .hps_io_usb1_inst_DIR
+    hps_0_hps_io_hps_io_usb1_inst_NXT     => HPS_USB_NXT,         --                        .hps_io_usb1_inst_NXT
 	 -- HPS SPI
-    hps_0_hps_io_hps_io_spim1_inst_CLK    => HPS_SPIM_CLK,                                       --                               .hps_io_spim1_inst_CLK
-    hps_0_hps_io_hps_io_spim1_inst_MOSI   => HPS_SPIM_MOSI,                                      --                               .hps_io_spim1_inst_MOSI
-    hps_0_hps_io_hps_io_spim1_inst_MISO   => HPS_SPIM_MISO,                                      --                               .hps_io_spim1_inst_MISO
-    hps_0_hps_io_hps_io_spim1_inst_SS0    => HPS_SPIM_SS,                                        --                               .hps_io_spim1_inst_SS0
+    hps_0_hps_io_hps_io_spim1_inst_CLK    => HPS_SPIM_CLK,        --                        .hps_io_spim1_inst_CLK
+    hps_0_hps_io_hps_io_spim1_inst_MOSI   => HPS_SPIM_MOSI,       --                        .hps_io_spim1_inst_MOSI
+    hps_0_hps_io_hps_io_spim1_inst_MISO   => HPS_SPIM_MISO,       --                        .hps_io_spim1_inst_MISO
+    hps_0_hps_io_hps_io_spim1_inst_SS0    => HPS_SPIM_SS,         --                        .hps_io_spim1_inst_SS0
 	 -- HPS UART
-    hps_0_hps_io_hps_io_uart0_inst_RX     => HPS_UART_RX,                                        --                               .hps_io_uart0_inst_RX
-    hps_0_hps_io_hps_io_uart0_inst_TX     => HPS_UART_TX,                                        --                               .hps_io_uart0_inst_TX
+    hps_0_hps_io_hps_io_uart0_inst_RX     => HPS_UART_RX,         --                        .hps_io_uart0_inst_RX
+    hps_0_hps_io_hps_io_uart0_inst_TX     => HPS_UART_TX,         --                        .hps_io_uart0_inst_TX
 	 -- HPS I2C0
-    hps_0_hps_io_hps_io_i2c0_inst_SDA     => HPS_I2C0_SDAT,                                      --                               .hps_io_i2c0_inst_SDA
-    hps_0_hps_io_hps_io_i2c0_inst_SCL     => HPS_I2C0_SCLK,                                      --                               .hps_io_i2c0_inst_SCL
+    hps_0_hps_io_hps_io_i2c0_inst_SDA     => HPS_I2C0_SDAT,       --                        .hps_io_i2c0_inst_SDA
+    hps_0_hps_io_hps_io_i2c0_inst_SCL     => HPS_I2C0_SCLK,       --                        .hps_io_i2c0_inst_SCL
 	 -- HPS I2C1
-    hps_0_hps_io_hps_io_i2c1_inst_SDA     => HPS_I2C1_SDAT,                                      --                               .hps_io_i2c1_inst_SDA
-    hps_0_hps_io_hps_io_i2c1_inst_SCL     => HPS_I2C1_SCLK,                                      --                               .hps_io_i2c1_inst_SCL
+    hps_0_hps_io_hps_io_i2c1_inst_SDA     => HPS_I2C1_SDAT,       --                        .hps_io_i2c1_inst_SDA
+    hps_0_hps_io_hps_io_i2c1_inst_SCL     => HPS_I2C1_SCLK,       --                        .hps_io_i2c1_inst_SCL
 	 -- GPIO
-    hps_0_hps_io_hps_io_gpio_inst_GPIO09  => HPS_CONV_USB_N,                                     --                               .hps_io_gpio_inst_GPIO09
-    hps_0_hps_io_hps_io_gpio_inst_GPIO35  => HPS_ENET_INT_N,                                     --                               .hps_io_gpio_inst_GPIO35
-    hps_0_hps_io_hps_io_gpio_inst_GPIO40  => HPS_LTC_GPIO,                                       --                               .hps_io_gpio_inst_GPIO40
-    hps_0_hps_io_hps_io_gpio_inst_GPIO53  => HPS_LED,                                            --                               .hps_io_gpio_inst_GPIO53
-    hps_0_hps_io_hps_io_gpio_inst_GPIO54  => HPS_KEY,                                            --                               .hps_io_gpio_inst_GPIO54
-    hps_0_hps_io_hps_io_gpio_inst_GPIO61  => HPS_GSENSOR_INT,                                    --                               .hps_io_gpio_inst_GPIO61
+    hps_0_hps_io_hps_io_gpio_inst_GPIO09  => HPS_CONV_USB_N,      --                        .hps_io_gpio_inst_GPIO09
+    hps_0_hps_io_hps_io_gpio_inst_GPIO35  => HPS_ENET_INT_N,      --                        .hps_io_gpio_inst_GPIO35
+    hps_0_hps_io_hps_io_gpio_inst_GPIO40  => HPS_LTC_GPIO,        --                        .hps_io_gpio_inst_GPIO40
+    hps_0_hps_io_hps_io_gpio_inst_GPIO53  => HPS_LED,             --                        .hps_io_gpio_inst_GPIO53
+    hps_0_hps_io_hps_io_gpio_inst_GPIO54  => HPS_KEY,             --                        .hps_io_gpio_inst_GPIO54
+    hps_0_hps_io_hps_io_gpio_inst_GPIO61  => HPS_GSENSOR_INT,     --                        .hps_io_gpio_inst_GPIO61
 
 	 -- HPS DDR3
-    memory_mem_a                          => HPS_DDR3_ADDR,                                      --                         memory.mem_a
-    memory_mem_ba                         => HPS_DDR3_BA,                                        --                               .mem_ba
-    memory_mem_ck                         => HPS_DDR3_CK_P,                                      --                               .mem_ck
-    memory_mem_ck_n                       => HPS_DDR3_CK_N,            				             --                               .mem_ck_n
-    memory_mem_cke                        => HPS_DDR3_CKE,                                       --                               .mem_cke
-    memory_mem_cs_n                       => HPS_DDR3_CS_N,                                      --                               .mem_cs_n
-    memory_mem_ras_n                      => HPS_DDR3_RAS_N,                                     --                               .mem_ras_n
-    memory_mem_cas_n                      => HPS_DDR3_CAS_N ,                                    --                               .mem_cas_n
-    memory_mem_we_n                       => HPS_DDR3_WE_N,                                      --                               .mem_we_n
-    memory_mem_reset_n                    => HPS_DDR3_RESET_N,                                   --                               .mem_reset_n
-    memory_mem_dq                         => HPS_DDR3_DQ,                                        --                               .mem_dq
-    memory_mem_dqs                        => HPS_DDR3_DQS_P,                                     --                               .mem_dqs
-    memory_mem_dqs_n                      => HPS_DDR3_DQS_N,                                     --                               .mem_dqs_n
-    memory_mem_odt                        => HPS_DDR3_ODT,                                       --                               .mem_odt
-    memory_mem_dm                         => HPS_DDR3_DM,                                        --                               .mem_dm
-    memory_oct_rzqin                      => HPS_DDR3_RZQ,                                       --                               .oct_rzqin
+    memory_mem_a                          => HPS_DDR3_ADDR,       --                  memory.mem_a
+    memory_mem_ba                         => HPS_DDR3_BA,         --                        .mem_ba
+    memory_mem_ck                         => HPS_DDR3_CK_P,       --                        .mem_ck
+    memory_mem_ck_n                       => HPS_DDR3_CK_N,       --                        .mem_ck_n
+    memory_mem_cke                        => HPS_DDR3_CKE,        --                        .mem_cke
+    memory_mem_cs_n                       => HPS_DDR3_CS_N,       --                        .mem_cs_n
+    memory_mem_ras_n                      => HPS_DDR3_RAS_N,      --                        .mem_ras_n
+    memory_mem_cas_n                      => HPS_DDR3_CAS_N ,     --                        .mem_cas_n
+    memory_mem_we_n                       => HPS_DDR3_WE_N,       --                        .mem_we_n
+    memory_mem_reset_n                    => HPS_DDR3_RESET_N,    --                        .mem_reset_n
+    memory_mem_dq                         => HPS_DDR3_DQ,         --                        .mem_dq
+    memory_mem_dqs                        => HPS_DDR3_DQS_P,      --                        .mem_dqs
+    memory_mem_dqs_n                      => HPS_DDR3_DQS_N,      --                        .mem_dqs_n
+    memory_mem_odt                        => HPS_DDR3_ODT,        --                        .mem_odt
+    memory_mem_dm                         => HPS_DDR3_DM,         --                        .mem_dm
+    memory_oct_rzqin                      => HPS_DDR3_RZQ,        --                        .oct_rzqin
 
 	 -- HPS Parallel I/O and user modules
-    button_pio_external_connection_export => KEYE,      -- button_pio_external_connection.export
-    dipsw_pio_external_connection_export  => SWD,       --  dipsw_pio_external_connection.export
-    led_pio_external_connection_export    => ledreg,    --    led_pio_external_connection.export
-	 version_pio_external_connection_export => Firmware_Version,  -- fixed value!!
+    button_pio_external_connection_export => KEYE,                -- button_pio_external_connection.export
+    dipsw_pio_external_connection_export  => SWD,                 --  dipsw_pio_external_connection.export
+    led_pio_external_connection_export    => ledreg,              --    led_pio_external_connection.export
+	 version_pio_external_connection_export => Firmware_Version,    -- fixed value!!
 	 -- HPS Fifo control
-    iofifo_datain                         => iofifo_datain, -- datain
+    iofifo_datain                         => iofifo_datain,       -- datain
     iofifo_writereq                       => iofifo_writereq,
     iofifo_instatus                       => iofifo_instatus,
     iofifo_dataout                        => iofifo_dataout,
@@ -504,118 +498,82 @@ begin
     iofifo_regreadack                     => iofifo_regreadack,
     iofifo_regoutstatus                   => iofifo_regoutstatus,
 	 -- event_FIFO to DDR3 manager------------------------------------------------------------------
-    to_ram_ctrl_fpga_side_reg  => fpga_side_RAM_ctrl_reg,      --     to_ram_ctrl.fpga_side_reg
-    to_ram_ctrl_hps_side_reg   => hps_side_RAM_ctrl_reg,       --    .hps_side_reg
-    to_ram_ctrl_enable         => SDRAM_interface_enable,   --      .enable
-    to_ram_fifo_data_ack       => fifo_readack_from_RAM,         --       to_ram_fifo.data_ack
-    to_ram_fifo_data_event     => iofifo_dataout,          --          .data_event
-    to_ram_fifo_data_empty     => event_fifo_empty,          --     .data_empty
-    hps_fpga_ram_sync_gp_in    => fpga_side_RAM_ctrl_reg,      --       hps_fpga_ram_sync.gp_in
-    hps_fpga_ram_sync_gp_out   => hps_side_RAM_ctrl_reg        --     .gp_out
+    to_ram_ctrl_fpga_side_reg  => fpga_side_RAM_ctrl_reg,         --             to_ram_ctrl.fpga_side_reg
+    to_ram_ctrl_hps_side_reg   => hps_side_RAM_ctrl_reg,          --                        .hps_side_reg
+    to_ram_ctrl_enable         => SDRAM_interface_enable,         --                        .enable
+    to_ram_fifo_data_ack       => fifo_readack_from_RAM,          --             to_ram_fifo.data_ack
+    to_ram_fifo_data_event     => iofifo_dataout,                 --                        .data_event
+    to_ram_fifo_data_empty     => event_fifo_empty,               --                        .data_empty
+    hps_fpga_ram_sync_gp_in    => fpga_side_RAM_ctrl_reg,         --       hps_fpga_ram_sync.gp_in
+    hps_fpga_ram_sync_gp_out   => hps_side_RAM_ctrl_reg           --                        .gp_out
   );
 
   FPGA0: entity work.FPGATop
   port map (
     --Inputs
-    Clock => Clock,
-    Reset => Reset,
-	 KEY => KEY,
-	 adc_raw_values => adc_raw_values,
-	 -- Leds
-    LED => LED,
-	 -- Swithces
-    SW  => SW,
-	  --///////// GPIO /////////
-      oFE0                => sFeA,
-      oFE1                => sFeB,
-      oADC0               => sAdcA,
-      oADC1               => sAdcB,
-      iMULTI_ADC          => sMultiAdcSynch,
-      --
-      iBcoClk             => sBcoClkSynch,
-      iBcoRst             => sBcoRstSynch,
-      iExtTrig            => sExtTrgSynch,
-      oBusy               => sBusy,
-      --
-      oDEBUG              => sDebug,
-      oErrors             => sErrors,
-	 -- HPS
-    f2h_stm_hw_events  => stm_hwevents,
-    button_pio         => KEYE,
-    dipsw_pio          => SWD,
-    led_pio            => ledreg,
-    iofifo_datain      => iofifo_datain,
-    iofifo_writereq    => iofifo_writereq,
-    iofifo_instatus    => iofifo_instatus,
-    iofifo_dataout     => iofifo_dataout,
-    iofifo_readack     => iofifo_readack,
-    iofifo_outstatus   => iofifo_outstatus,
-    iofifo_regdataout     => iofifo_regdataout,
-    iofifo_regreadack     => iofifo_regreadack,
-    iofifo_regoutstatus   => iofifo_regoutstatus,
-	SDRAM_interface_enable => SDRAM_interface_enable,
-	event_fifo_empty       => event_fifo_empty,
-	fifo_readack_from_RAM  => fifo_readack_from_RAM,
-	fpga_side_RAM_ctrl_reg => fpga_side_RAM_ctrl_reg,
-	hps_side_RAM_ctrl_reg => hps_side_RAM_ctrl_reg
+    Clock                   => Clock,
+    Reset                   => fpgaTopRst,
+	  KEY                     => KEY,
+	  adc_raw_values          => adc_raw_values,
+	  -- Leds
+    LED                     => LED,
+	  -- Swithces
+    SW                      => SW,
+	  -- GPIOs
+    oFE0                    => sFeA,
+    oFE1                    => sFeB,
+    oADC0                   => sAdcA,
+    oADC1                   => sAdcB,
+    iMULTI_ADC              => sMultiAdcSynch,
+    --
+    iBcoClk                 => sBcoClkSynch,
+    iBcoRst                 => sBcoRstSynch,
+    iExtTrig                => sExtTrgSynch,
+    oBusy                   => sBusy,
+    --
+    oDEBUG                  => sDebug,
+    oErrors                 => sErrors,
+	  -- HPS
+    f2h_stm_hw_events       => stm_hwevents,
+    button_pio              => KEYE,
+    dipsw_pio               => SWD,
+    led_pio                 => ledreg,
+    iofifo_datain           => iofifo_datain,
+    iofifo_writereq         => iofifo_writereq,
+    iofifo_instatus         => iofifo_instatus,
+    iofifo_dataout          => iofifo_dataout,
+    iofifo_readack          => iofifo_readack,
+    iofifo_outstatus        => iofifo_outstatus,
+    iofifo_regdataout       => iofifo_regdataout,
+    iofifo_regreadack       => iofifo_regreadack,
+    iofifo_regoutstatus     => iofifo_regoutstatus,
+	  SDRAM_interface_enable  => SDRAM_interface_enable,
+	  event_fifo_empty        => event_fifo_empty,
+	  fifo_readack_from_RAM   => fifo_readack_from_RAM,
+	  fpga_side_RAM_ctrl_reg  => fpga_side_RAM_ctrl_reg,
+	  hps_side_RAM_ctrl_reg   => hps_side_RAM_ctrl_reg
   );
 
-  -- ADC Controller
-  adc_0 : component ADC_controller_IP
-    port map (
-      CLOCK    => Clock,    --                clk.clk
-      RESET    => Reset,    --              reset.reset
-		-- Analog values
-      CH0      => adc_raw_values(0),      --           readings.CH0
-		CH1      => adc_raw_values(1),      --                   .CH1
-		CH2      => adc_raw_values(2),      --                   .CH2
-		CH3      => adc_raw_values(3),      --                   .CH3
-		CH4      => adc_raw_values(4),      --                   .CH4
-		CH5      => adc_raw_values(5),      --                   .CH5
-		CH6      => adc_raw_values(6),      --                   .CH6
-		CH7      => adc_raw_values(7),      --                   .CH7
-		-- FPGA pins
-		ADC_SCLK => ADC_SCK, -- external_interface.SCLK
-		ADC_CS_N => ADC_CONVST, --                   .CS_N
-		ADC_DOUT => ADC_SDO, --                   .DOUT
-		ADC_DIN  => ADC_SDI   --                   .DIN
-  );
-
-  --
-  --  Cold, Warm and Debug RESETs
-  --
-  process(Clock)
-    variable oldRes : std_logic;
-	 variable counter : natural := 0;
-  begin
-    if rising_edge(Clock) then
-	 -- Generate different resets based on counter (see below)
-      if counter>1 and counter<4 then
-	     nWarmReset <= '0';-- short
-	   else
-	     nWarmReset <= '1';
-	   end if;
-      if counter>1 and counter<8 then
-	     nColdReset <= '0';-- longer
-	   else
-	     nColdReset <= '1';
-	   end if;
-      if counter>1 and counter<32 then
-	     nDebugReset <= '0';-- longest
-	   else
-	     nDebugReset <= '1';
-	   end if;
-		-- When rising edge on reset, start counting to 100, then reset and wait
-      if Reset='1' and oldRes='0' then
-	     counter :=1;
-	   elsif counter > 0 and counter<100 then
-        counter := counter+1;
-	   else
-	     counter := 0;
-	   end if;
-	   oldRes := Reset;
-	 end if;
-  end process;
-
-
+  adc_raw_values <= (others => "000000000000");
+  ---- ADC Controller
+  --adc_0 : component ADC_controller_IP
+  --  port map (
+  --  CLOCK    => Clock,              --                clk.clk
+  --  RESET    => adcCtrlRst,         --              reset.reset
+	--	-- Analog values
+  --  CH0      => adc_raw_values(0),  --           readings.CH0
+	--	CH1      => adc_raw_values(1),  --                   .CH1
+	--	CH2      => adc_raw_values(2),  --                   .CH2
+	--	CH3      => adc_raw_values(3),  --                   .CH3
+	--	CH4      => adc_raw_values(4),  --                   .CH4
+	--	CH5      => adc_raw_values(5),  --                   .CH5
+	--	CH6      => adc_raw_values(6),  --                   .CH6
+	--	CH7      => adc_raw_values(7),  --                   .CH7
+	--	-- FPGA pins
+	--	ADC_SCLK => ADC_SCK,            -- external_interface.SCLK
+	--	ADC_CS_N => ADC_CONVST,         --                   .CS_N
+	--	ADC_DOUT => ADC_SDO,            --                   .DOUT
+	--	ADC_DIN  => ADC_SDI             --                   .DIN
+  --);
+  
 end architecture structural;

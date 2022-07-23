@@ -1,4 +1,4 @@
-// (C) 2001-2018 Intel Corporation. All rights reserved.
+// (C) 2001-2020 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files from any of the foregoing (including device programming or simulation 
@@ -14,12 +14,6 @@
 module soc_system_hps_0_fpga_interfaces(
 // h2f_reset
   output wire [1 - 1 : 0 ] h2f_rst_n
-// f2h_cold_reset_req
- ,input wire [1 - 1 : 0 ] f2h_cold_rst_req_n
-// f2h_debug_reset_req
- ,input wire [1 - 1 : 0 ] f2h_dbg_rst_req_n
-// f2h_warm_reset_req
- ,input wire [1 - 1 : 0 ] f2h_warm_rst_req_n
 // f2h_stm_hw_events
  ,input wire [28 - 1 : 0 ] f2h_stm_hwevents
 // h2f_gp
@@ -179,16 +173,16 @@ cyclonev_hps_interface_clocks_resets clocks_resets(
     1'b1 // 0:0
   })
 ,.f2h_warm_rst_req_n({
-    f2h_warm_rst_req_n[0:0] // 0:0
+    1'b1 // 0:0
   })
 ,.f2h_dbg_rst_req_n({
-    f2h_dbg_rst_req_n[0:0] // 0:0
+    1'b1 // 0:0
   })
 ,.h2f_rst_n({
     h2f_rst_n[0:0] // 0:0
   })
 ,.f2h_cold_rst_req_n({
-    f2h_cold_rst_req_n[0:0] // 0:0
+    1'b1 // 0:0
   })
 );
 

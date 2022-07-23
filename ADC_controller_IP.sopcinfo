@@ -4,12 +4,12 @@
  kind="ADC_controller_IP"
  version="1.0"
  fabric="QSYS">
- <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2021.02.18.18:27:18 -->
+ <!-- Format version 20.1 720 (Future versions may contain additional information.) -->
+ <!-- 2022.02.07.17:34:14 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1613669238</value>
+  <value>1644251654</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -102,7 +102,7 @@
  <module
    name="adc_mega_0"
    kind="altera_up_avalon_adc_mega"
-   version="17.1"
+   version="18.0"
    path="adc_mega_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -214,7 +214,7 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <interface name="clk" kind="clock_sink" version="17.1">
+  <interface name="clk" kind="clock_sink" version="20.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -275,7 +275,7 @@ parameters are a RESULT of the module parameters. -->
     <role>clk</role>
    </port>
   </interface>
-  <interface name="reset" kind="reset_sink" version="17.1">
+  <interface name="reset" kind="reset_sink" version="20.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -320,7 +320,7 @@ parameters are a RESULT of the module parameters. -->
     <role>reset</role>
    </port>
   </interface>
-  <interface name="readings" kind="conduit_end" version="17.1">
+  <interface name="readings" kind="conduit_end" version="20.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -407,7 +407,7 @@ parameters are a RESULT of the module parameters. -->
     <role>export</role>
    </port>
   </interface>
-  <interface name="external_interface" kind="conduit_end" version="17.1">
+  <interface name="external_interface" kind="conduit_end" version="20.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -477,7 +477,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>ADC Controller for DE-series Boards</displayName>
-  <version>17.1</version>
+  <version>18.0</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -485,7 +485,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Clock Input</displayName>
-  <version>17.1</version>
+  <version>20.1</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -493,7 +493,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Reset Input</displayName>
-  <version>17.1</version>
+  <version>20.1</version>
  </plugin>
  <plugin>
   <instanceCount>2</instanceCount>
@@ -501,8 +501,8 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Conduit</displayName>
-  <version>17.1</version>
+  <version>20.1</version>
  </plugin>
- <reportVersion>17.1 590</reportVersion>
+ <reportVersion>20.1 720</reportVersion>
  <uniqueIdentifier></uniqueIdentifier>
 </EnsembleReport>

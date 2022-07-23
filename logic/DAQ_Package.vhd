@@ -8,7 +8,7 @@ use work.FOOTpackage.all;
 package DAQ_Package is
 
   -- Contained in monitor register 0  (abs reg 16)
-  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100300";
+  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100301";
 
   constant N_MONITOR_REGS : natural := 16; -- Number of mapped monitor registers
   constant N_CONTROL_REGS : natural := 16; -- Number of mapped control registers
@@ -76,7 +76,8 @@ package DAQ_Package is
     := cCFG_PLANE & cTRG2HOLD; --feCfg_trg2Hold
   constant CtrlReg10 : std_logic_vector (31 downto 0)
     := cTRG_PERIOD; --intTrgPeriod
-  constant CtrlReg11 : std_logic_vector (31 downto 0) := x"00000000";
+  constant CtrlReg11 : std_logic_vector (31 downto 0)
+    := cBUSY_LEN & cADC_DELAY; --adcDelay_Busy
   constant CtrlReg12 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg13 : std_logic_vector (31 downto 0) := x"00000000";
   constant CtrlReg14 : std_logic_vector (31 downto 0) := x"00000000";
@@ -138,6 +139,7 @@ package DAQ_Package is
   constant adcClk         : natural := 8;
   constant feCfg_trg2Hold : natural := 9;
   constant intTrgPeriod   : natural := 10;
+  constant adcDelay_Busy  : natural := 11;
   -- Monitor Register Map and Flag map --
   constant Firmware_Reg : natural := 0;
   constant FSM_StatusSignals_Reg : natural := 1;
