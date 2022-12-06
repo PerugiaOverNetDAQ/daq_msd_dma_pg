@@ -8,7 +8,7 @@ use work.FOOTpackage.all;
 package DAQ_Package is
 
   -- Contained in monitor register 0  (abs reg 16)
-  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100301";
+  constant Firmware_Version : std_logic_vector(31 downto 0) := x"de100303";
 
   constant N_MONITOR_REGS : natural := 16; -- Number of mapped monitor registers
   constant N_CONTROL_REGS : natural := 16; -- Number of mapped control registers

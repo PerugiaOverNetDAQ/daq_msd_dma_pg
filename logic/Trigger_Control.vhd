@@ -155,7 +155,7 @@ begin
   );
    
   -- prepare a long busy
-  BusyM <= '0' when Busy='0' -- and Trigger='0' and triggerDelayer=(others=>'0')  -- check later
+  BusyM <= '0' when Busy='0' and DAQIsRunning='1' -- say it is busy if not in running mode!
                else '1';
  
   -- Busy_Stretcher for external pin
